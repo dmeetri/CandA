@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Файлы{% endblock %}
+
+{% block content %}
+<section>
+  {% for file in files %}
+  <div>
+    <p>{{ file.title }}</p>
+    <p>{{ file.description }}</p>
+    <p>{{ file.file }}</p>
+    <p>{{ file.extension }}</p>
+    <p>{{ file.created_at }}</p>
+    <p>{{ file.updated_at }}</p>
+  </div>
+  {% endfor %}
+</section>
+{% endblock %}
