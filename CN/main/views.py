@@ -1,8 +1,12 @@
+from django.shortcuts import render
 from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from . import models, forms
+
+def home(request):
+    return render(request, 'base.html')
 
 class FileCreateView(CreateView):
     model = models.FileModel
