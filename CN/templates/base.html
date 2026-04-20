@@ -5,10 +5,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static 'styles.css' %}">
+  <link rel="stylesheet" href="{% static 'aside.css' %}">
   {% block extra_css %}{% endblock %}
   <title>C&N | {% block title %}Дашборд{% endblock %}</title>
 </head>
 <body>
+  <aside>
+    <div class="aside-container">
+      <div class="aside-header-content">
+        <h1>C&N</h1>
+      </div>
+    </div>
+  </aside>
+
   {% block content %}{% endblock %}
 </body>
 </html>
