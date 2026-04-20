@@ -10,33 +10,3 @@
 3 - остальные метрики - ОЗУ, память, интернет и тд
 
 (Для всего выше иметь возможность в админке отключать для снижения нагрузки)
-
-
-TODO - сделай считывание нагрузки из тайм веба у них есть
-
-import requests
-from django.shortcuts import render
-
-def get_timeweb_metrics(request):
-    token = "ВАШ_API_ТОКЕН"
-    server_id = "ID_ВАШЕГО_СЕРВЕРА"
-    url = f"https://timeweb.cloud{server_id}/statistics"
-    
-    headers = {
-        "Authorization": f"Bearer {token}",
-        "Content-Type": "application/json"
-    }
-    
-    # Запрашиваем метрику CPU (тип cpu)
-    response = requests.get(url, headers=headers, params={"type": "cpu"})
-    
-    if response.status_code == 200:
-        data = response.json()
-        # Обычно API возвращает список последних значений. 
-        # Берем самое последнее из них.
-        last_metric = data.get('statistics', [])[-1] 
-        cpu_usage = last_metric.get('value', 0)
-    else:
-        cpu_usage = "Ошибка API"
-
-    return render(request, 'monitor.html', {'cpu_usage': cpu_usage})

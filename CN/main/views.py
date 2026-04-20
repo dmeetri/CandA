@@ -1,8 +1,12 @@
-from django.shortcuts import render, redirect
+import json
+
+from django.shortcuts import render
 from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import send_mail
+from django.http import JsonResponse
+
 from django.conf import settings
 
 from . import models, forms, metrics
@@ -10,7 +14,8 @@ from . import models, forms, metrics
 def home(request):
     return render(request, 'base.html')
 
-# FILES
+
+# === FILES ===
 
 class FileCreateView(CreateView):
     model = models.FileModel
@@ -51,10 +56,19 @@ class FileDeleteView(DeleteView):
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)
 
-# EMAIL SEND
 
-def my_view(request):
+# === EMAIL SEND ===
+
+def send_email(request):
     try:
+        '''
+        data = json.loads(request.body)
+
+        to_email = data.get('to')
+        subject = data.get('subject', 'Нет темы')
+        message = data.get('message', '')
+        '''
+
         send_mail(
             subject='Внимание! Заполнение диска на сервере',
             message=f'Диск заполнен на 90%. Срочно примите меры.',
@@ -64,8 +78,16 @@ def my_view(request):
             ],
             fail_silently=False,
         )
-        print("Письмо успешно отправлено!")
-    except Exception as e:
-        print(f"Произошла ошибка при отправке письма: {e}")
 
-    return render(request, 'base.html')
+        return JsonResponse({
+            'success': True,
+            'message': f'Письмо отправлено!'
+        }, status=200)
+    except json.JSONDecodeError:
+        return JsonResponse({
+            'error': 'Неверный JSON формат'
+        }, status=400)
+    except Exception as e:
+        return JsonResponse({
+            'error': f'Ошибка при отправке: {str(e)}'
+        }, status=500)

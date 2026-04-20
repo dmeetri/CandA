@@ -6,7 +6,7 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-g8l=y&wmerj)2bbk+hzw9mgk=s++m!#nfr=$64x-4(5s$cf1f$'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = True
 
@@ -96,6 +96,10 @@ AUTH_USER_MODEL = 'main.CustomUser'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
+
+# === FOR SEND EMAIL ===
+
+EMAIL_API_KEY = os.getenv('EMAIL_API_KEY')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
