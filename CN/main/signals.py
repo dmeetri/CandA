@@ -12,4 +12,4 @@ def rename_file_before_save(sender, instance, **kwargs):
         ext = os.path.splitext(old_file.name)[1]
         new_filename = f"{uuid.uuid4().hex}{ext}"
 
-        instance.file.name = os.path.join('files/', new_filename)
+        instance.file.name = new_filename
