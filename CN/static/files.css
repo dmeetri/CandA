@@ -1,0 +1,19 @@
+/* FILES */
+
+.all-files-container-metrics h2 {
+  margin-bottom: 10px;
+}
+
+.all-files-info-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 10px;
+}
+.file-info-card {
+  width: 100%;
+  background: var(--bg-gradient);
+}
+
+/* FILE */
+
+/* CREATE FILE */

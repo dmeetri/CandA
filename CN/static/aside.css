@@ -6,8 +6,8 @@ aside {
   overflow: auto;
 
   height: 100vh;
-  background-color: var(--bg-block);
-  border-right: 1px solid var(--border-dark);
+  background: var(--bg-gradient);
+  border-right: 1px solid var(--border-light);
   box-shadow: var(--shadow-sm);
 }
 .aside-container {
@@ -19,14 +19,14 @@ aside {
 }
 
 .aside-header-content {
-  border-bottom: 1px solid var(--border-dark);
+  border-bottom: 1px solid var(--border-light);
   padding-bottom: 10px;
 }
 
 .aside-navigation {
   display: block;
   width: 100%;
-  border-bottom: 1px solid var(--border-dark);
+  border-bottom: 1px solid var(--border-light);
   padding-bottom: 10px;
 }
 .aside-navigation a {

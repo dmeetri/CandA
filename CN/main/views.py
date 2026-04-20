@@ -3,7 +3,7 @@ from django.views.generic import CreateView, UpdateView, ListView, DetailView, D
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from . import models, forms
+from . import models, forms, metrics
 
 def home(request):
     return render(request, 'base.html')
@@ -19,6 +19,12 @@ class FilesListView(LoginRequiredMixin, ListView):
     model = models.FileModel
     template_name = 'files/files.html'
     context_object_name = 'files'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['disk_usage'] = metrics.get_disk_usega()
+
+        return context
 
 
 class FileDetailView(DetailView):
