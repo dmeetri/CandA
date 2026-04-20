@@ -29,7 +29,9 @@
     </aside>
 
     <main>
-      {% block content %}{% endblock %}
+      {% block content %}
+        {{ cpu_load }}
+      {% endblock %}
     </main>
   </div>
 </body>
