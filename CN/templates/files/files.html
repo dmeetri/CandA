@@ -30,18 +30,22 @@
   </div>
 </section>
 
-<section class="main-block">
+<section class="all-files-section-create-button">
+  <a class="text-regular font-normal" href="{% url 'filescreate' %}">Загрузить</a>
+</section>
+
+<section class="all-files-list-files">
   <h2>Все файлы</h2>
 
   {% for file in files %}
-  <div>
+  <a href="#" class="main-block">
     <p>{{ file.title }}</p>
     <p>{{ file.description }}</p>
     <p>{{ file.file }}</p>
     <p>{{ file.extension }}</p>
     <p>{{ file.created_at }}</p>
     <p>{{ file.updated_at }}</p>
-  </div>
+  </a>
   {% endfor %}
 </section>
 {% endblock %}

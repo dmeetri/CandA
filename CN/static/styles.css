@@ -13,7 +13,7 @@ nav {
   display: block;
 }
 section {
-  margin-bottom: 20px;
+  margin-bottom: 32px;
 }
 
 ::selection {
@@ -44,6 +44,9 @@ input {
 }
 
 :root {
+  --accent-color: #2f8fb9;
+  --accent-color-hover: #237a9f;
+
   --bg-page: #1a1c24;
   --bg-block: #242731;
   --bg-gradient: linear-gradient(180deg, #2b303b, #1c1f26);

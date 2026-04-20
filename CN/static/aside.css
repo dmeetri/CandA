@@ -42,5 +42,5 @@ aside {
 }
 
 .a-aside-nav-hover:hover {
-  background-color: var(--bg-page);
+  background-color: var(--accent-color);
 }

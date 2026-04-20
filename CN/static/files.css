@@ -14,6 +14,24 @@
   background: var(--bg-gradient);
 }
 
+.all-files-section-create-button {
+  width: 100%;
+}
+.all-files-section-create-button a {
+  padding: 10px 15px;
+  border-radius: 3px;
+  background-color: var(--accent-color);
+}
+.all-files-section-create-button a:hover {
+  background-color: var(--accent-color-hover);
+}
+
+.all-files-list-files {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 /* FILE */
 
 /* CREATE FILE */
