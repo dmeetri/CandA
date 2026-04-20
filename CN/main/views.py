@@ -7,9 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import send_mail
 from django.http import JsonResponse
 
-from django.conf import settings
-
-from . import models, forms, metrics
+from . import models, forms, metrics, services
 
 def home(request):
     return render(request, 'base.html')
@@ -61,28 +59,18 @@ class FileDeleteView(DeleteView):
 
 def send_email(request):
     try:
-        '''
         data = json.loads(request.body)
 
-        to_email = data.get('to')
-        subject = data.get('subject', 'Нет темы')
-        message = data.get('message', '')
-        '''
-
-        send_mail(
-            subject='Внимание! Заполнение диска на сервере',
-            message=f'Диск заполнен на 90%. Срочно примите меры.',
-            from_email=None,
-            recipient_list=[
-                settings.EMAIL_FOR_SEND
-            ],
-            fail_silently=False,
+        result = services.send_email_message(
+            to_email=data.get('to'),
+            subject=data.get('subject', 'Нет темы'),
+            message=data.get('message', '')
         )
 
-        return JsonResponse({
-            'success': True,
-            'message': f'Письмо отправлено!'
-        }, status=200)
+        if result['success']:
+            return JsonResponse(result, status=200)
+        else:
+            return JsonResponse(result, status=500)
     except json.JSONDecodeError:
         return JsonResponse({
             'error': 'Неверный JSON формат'
