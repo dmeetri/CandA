@@ -10,23 +10,27 @@
   <title>C&N | {% block title %}Дашборд{% endblock %}</title>
 </head>
 <body>
-  <aside>
-    <div class="aside-container">
-      <div class="aside-header-content">
-        <h1>C&N</h1>
+  <div class="root-container">
+    <aside>
+      <div class="aside-container">
+        <div class="aside-header-content">
+          <h1>C&N</h1>
+        </div>
+
+        <nav class="aside-navigation">
+          <a href="#" class="a-aside-nav-hover text-regular font-normal">Дашборд</a>
+          <a href="#" class="a-aside-nav-hover text-regular font-normal">Файлы</a>
+        </nav>
+
+        <div class="profile-button">
+          <a href="#" class="a-aside-nav-hover text-regular font-normal">Профиль</a>
+        </div>
       </div>
+    </aside>
 
-      <nav class="aside-navigation">
-        <a href="#" class="a-aside-nav-hover text-regular font-normal">Дашборд</a>
-        <a href="#" class="a-aside-nav-hover text-regular font-normal">Файлы</a>
-      </nav>
-
-      <div class="profile-button">
-        <a href="#" class="a-aside-nav-hover text-regular font-normal">Профиль</a>
-      </div>
-    </div>
-  </aside>
-
-  {% block content %}{% endblock %}
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+  </div>
 </body>
 </html>

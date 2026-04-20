@@ -1,8 +1,4 @@
 aside {
-  position: fixed;
-  left: 0;
-  right: 0;
-
   width: 260px;
   max-width: 260px;
   min-width: 100px;
