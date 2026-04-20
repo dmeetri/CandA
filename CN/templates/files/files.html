@@ -49,7 +49,7 @@
     </thead>
     <tbody>
       {% for file in files %}
-      <tr>
+      <tr data-href="{% url 'filesdetail' file.pk %}">
         <td class="files-td-id font-bold">{{ file.id }}</td>
         <td class="files-td-title font-bold">{{ file.title }}</td>
         <td class="files-td-desc">{{ file.description }}</td>
@@ -57,7 +57,14 @@
         <td class="files-td-create">{{ file.created_at }}</td>
         <td class="files-td-updt">{{ file.updated_at }}</td>
         <td class="files-td-del">
-          <button onclick="delete_file_in_table()">Удалить</button>
+          <form action="{% url 'filesdelete' file.pk %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" 
+                    class="delete-btn" 
+                    onclick="event.stopPropagation(); return confirm('Удалить файл?')">
+              Удалить
+            </button>
+          </form>
         </td>
       </tr>
       {% endfor %}
@@ -66,8 +73,14 @@
 </section>
 
 <script>
-  function delete_file_in_table() {
-    confirm('Вы точно хотите удалить файл?');
-  }
+  // Переход на страницу деталей одного файла по клику в таблице
+  document.addEventListener("DOMContentLoaded", function() {
+    const rows = document.querySelectorAll("tr[data-href]");
+      rows.forEach(row => {
+        row.addEventListener("click", () => {
+          window.location.href = row.dataset.href;
+        });
+      });
+  });
 </script>
 {% endblock %}

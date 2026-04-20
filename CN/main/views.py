@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -43,3 +43,6 @@ class FileUpdateView(UpdateView):
 class FileDeleteView(DeleteView):
     model = models.FileModel
     success_url = reverse_lazy('fileslist')
+
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)
