@@ -2,13 +2,11 @@ from django.shortcuts import render, redirect
 from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.cache import cache
 
 from . import models, forms, metrics
 
 def home(request):
-    cpu_load = cache.get('current_cpu_load', 0)
-    return render(request, 'base.html', {'cpu_load': cpu_load})
+    return render(request, 'base.html')
 
 class FileCreateView(CreateView):
     model = models.FileModel
