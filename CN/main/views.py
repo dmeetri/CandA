@@ -1,5 +1,6 @@
 from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from . import models, forms
 
@@ -10,7 +11,7 @@ class FileCreateView(CreateView):
     success_url = reverse_lazy('fileslist')
 
 
-class FilesListView(ListView):
+class FilesListView(LoginRequiredMixin, ListView):
     model = models.FileModel
     template_name = 'files/files.html'
     context_object_name = 'files'

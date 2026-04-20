@@ -1,0 +1,22 @@
+.auth-center-container {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-form {
+  width: 350px;
+}
+.auth-form h1 {
+  margin-bottom: 20px;
+}
+.auth-form .auth-block {
+  margin-bottom: 25px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

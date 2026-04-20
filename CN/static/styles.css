@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+::selection {
+  background-color: #ffcc00;
+  color: #000000;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: var(--bg-gradient);
+  border: 1px solid var(--border-dark);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+button:hover {
+  background: var(--bg-block);
+}
+
+input {
+  width: 100%;
+  padding: 6px;
+  background: var(--bg-gradient);
+  border: 1px solid var(--border-dark);
+  border-radius: 3px;
+  outline: none;
+}
+
+:root {
+  --bg-page: #e1e1e1;
+  --bg-block: #f3f3f3;
+  --bg-gradient: linear-gradient(180deg, rgb(214, 214, 214), rgb(244, 244, 244));
+
+  --border-light: #969696;
+  --border-dark: #3d3d3d;
+
+  --shadow-sm: 0px 0px 30px 0px rgba(34, 60, 80, 0.04);
+  --shadow-md: 0px 0px 24px 8px rgba(34, 60, 80, 0.11);
+}
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+
+  background-color: var(--bg-page);
+}
+
+.main-block {
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid var(--border-light);
+  background-color: var(--bg-block);
+  box-shadow: var(--shadow-sm);
+}
+
+/* FONTS */
+
+.text-small {
+  font-size: 14px;
+}
+.text-regular {
+  font-size: 16px;
+}
+.text-large {
+  font-size: 22px;
+}
+
+.font-light {
+  font-weight: 400;
+}
+.font-normal {
+  font-weight: 500;
+}
+.font-bold {
+  font-weight: 700;
+}

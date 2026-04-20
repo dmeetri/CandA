@@ -1,4 +1,21 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+
+class CustomUser(AbstractUser):
+    first_name = None
+    last_name = None
+
+    username = models.CharField(
+        unique=True,
+        max_length=100,
+        blank=False, null=False,
+    )
+    email = models.CharField(
+        max_length=200,
+        unique=True,
+        blank=False, null=False,
+    )
+
 
 class FileModel(models.Model):
     title = models.CharField(max_length=200)
@@ -16,7 +33,7 @@ class FileModel(models.Model):
     )
     extension = models.CharField(
         max_length=10,
-        choices=FILE_EXTENSION
+        choices=FILE_EXTENSION,
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
