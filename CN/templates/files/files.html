@@ -38,14 +38,26 @@
   <h2>Все файлы</h2>
 
   {% for file in files %}
-  <a href="#" class="main-block">
-    <p>{{ file.title }}</p>
-    <p>{{ file.description }}</p>
-    <p>{{ file.file }}</p>
-    <p>{{ file.extension }}</p>
-    <p>{{ file.created_at }}</p>
-    <p>{{ file.updated_at }}</p>
-  </a>
+  <form action="" class="main-block all-files-form-list-files">
+    <a href="{% url 'filesdetail' file.id %}" class="all-files-bock-file-info">
+      <div class="block-file-main-info">
+        <h2>
+          Название: <span class="text-regular font-normal">{{ file.title }}</span>
+        </h2>
+        <h3>
+          Описание:<br>
+          <span class="text-regular font-normal">{{ file.description }}</span>
+        </h3>
+      </div>
+
+      <div class="block-file-second-info">
+        <p class="text-regular font-normal">Расширение: {{ file.extension }}</p>
+        <p>Создан: {{ file.created_at }} | Обновлен: {{ file.updated_at }}</p>
+      </div>
+    </a>
+
+    <button>Удалить</button>
+  </form>
   {% endfor %}
 </section>
 {% endblock %}

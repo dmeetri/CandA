@@ -16,11 +16,6 @@ section {
   margin-bottom: 32px;
 }
 
-::selection {
-  background-color: #ffcc00;
-  color: #000000;
-}
-
 button {
   width: 100%;
   padding: 10px;
@@ -29,9 +24,10 @@ button {
   border-radius: 3px;
   outline: none;
   cursor: pointer;
+  color: #d1d1d1;
 }
 button:hover {
-  background: var(--bg-block);
+  background: var(--accent-color-hover);
 }
 
 input {
@@ -41,6 +37,7 @@ input {
   border: 1px solid var(--border-dark);
   border-radius: 3px;
   outline: none;
+  color: #d1d1d1;
 }
 
 :root {
@@ -52,7 +49,7 @@ input {
   --bg-gradient: linear-gradient(180deg, #2b303b, #1c1f26);
 
   --border-light: #4c5366;  
-  --border-dark: #3b1e1e;   
+  --border-dark: #1a182f;   
 
   --shadow-sm: 0px 0px 30px 0px rgba(0, 0, 0, 0.4);
   --shadow-md: 0px 0px 24px 8px rgba(13, 15, 20, 0.6);

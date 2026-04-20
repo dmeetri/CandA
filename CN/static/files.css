@@ -32,6 +32,35 @@
   gap: 10px;
 }
 
+.all-files-form-list-files {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 170px;
+}
+.all-files-form-list-files button {
+  width: 100px;
+  height: 100%;
+  background-color: aqua;
+}
+
+.all-files-bock-file-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.all-files-bock-file-info:hover {
+  background-color: var(--accent-color);
+}
+.all-files-bock-file-info .block-file-main-info h2 {
+  margin-bottom: 5px;
+}
+.all-files-bock-file-info .block-file-second-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
 /* FILE */
 
 /* CREATE FILE */
