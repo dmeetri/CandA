@@ -26,39 +26,31 @@
   background-color: var(--accent-color-hover);
 }
 
-.all-files-list-files {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.all-files-list-files h2 {
+  margin-bottom: 10px;
 }
 
-.all-files-form-list-files {
-  display: flex;
-  flex-wrap: nowrap;
-  height: 170px;
+.files-td-id {
+  width: 60px;
+  text-align: center;
 }
-.all-files-form-list-files button {
-  width: 100px;
-  height: 100%;
-  background-color: aqua;
+.files-td-title {
+  max-width: 170px;
+  overflow-wrap: break-word;
+}
+.files-td-desc {
+  max-width: 700px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.files-td-ext {
+  text-align: center;
 }
 
-.all-files-bock-file-info {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.all-files-bock-file-info:hover {
+.all-files-table tbody tr:hover :not(:last-child) {
   background-color: var(--accent-color);
-}
-.all-files-bock-file-info .block-file-main-info h2 {
-  margin-bottom: 5px;
-}
-.all-files-bock-file-info .block-file-second-info {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+  cursor: pointer;
 }
 
 /* FILE */

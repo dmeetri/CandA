@@ -46,6 +46,7 @@ input {
 
   --bg-page: #1a1c24;
   --bg-block: #242731;
+  --bg-table: #1d2028;
   --bg-gradient: linear-gradient(180deg, #2b303b, #1c1f26);
 
   --border-light: #4c5366;  
@@ -93,6 +94,32 @@ body {
 }
 .font-bold {
   font-weight: 700;
+}
+
+/* TABLES */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--border-light);
+}
+thead {
+  border-bottom: 1px solid var(--border-light);
+}
+th {
+  text-align: left;
+  background: var(--bg-gradient);
+  padding: 10px;
+}
+
+td {
+  padding: 5px;
+  border-bottom: 1px solid var(--border-light);
+  border-right: 1px solid var(--border-light);
+}
+
+table tbody tr:nth-of-type(even) {
+  background-color: var(--bg-table);
 }
 
 /* MAIN PAGE */

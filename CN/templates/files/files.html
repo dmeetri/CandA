@@ -34,30 +34,40 @@
   <a class="text-regular font-normal" href="{% url 'filescreate' %}">Загрузить</a>
 </section>
 
-<section class="all-files-list-files">
+<section class="main-block all-files-list-files">
   <h2>Все файлы</h2>
 
-  {% for file in files %}
-  <form action="" class="main-block all-files-form-list-files">
-    <a href="{% url 'filesdetail' file.id %}" class="all-files-bock-file-info">
-      <div class="block-file-main-info">
-        <h2>
-          Название: <span class="text-regular font-normal">{{ file.title }}</span>
-        </h2>
-        <h3>
-          Описание:<br>
-          <span class="text-regular font-normal">{{ file.description }}</span>
-        </h3>
-      </div>
-
-      <div class="block-file-second-info">
-        <p class="text-regular font-normal">Расширение: {{ file.extension }}</p>
-        <p>Создан: {{ file.created_at }} | Обновлен: {{ file.updated_at }}</p>
-      </div>
-    </a>
-
-    <button>Удалить</button>
-  </form>
-  {% endfor %}
+  <table class="all-files-table">
+    <thead>
+      <th >ID</th>
+      <th>Название</th>
+      <th>Описание</th>
+      <th>Расширение</th>
+      <th>Создан</th>
+      <th>Обновлен</th>
+      <th>Удалить</th>
+    </thead>
+    <tbody>
+      {% for file in files %}
+      <tr>
+        <td class="files-td-id font-bold">{{ file.id }}</td>
+        <td class="files-td-title font-bold">{{ file.title }}</td>
+        <td class="files-td-desc">{{ file.description }}</td>
+        <td class="files-td-ext font-bold">{{ file.extension }}</td>
+        <td class="files-td-create">{{ file.created_at }}</td>
+        <td class="files-td-updt">{{ file.updated_at }}</td>
+        <td class="files-td-del">
+          <button onclick="delete_file_in_table()">Удалить</button>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </section>
+
+<script>
+  function delete_file_in_table() {
+    confirm('Вы точно хотите удалить файл?');
+  }
+</script>
 {% endblock %}

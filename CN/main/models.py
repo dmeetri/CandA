@@ -41,6 +41,7 @@ class FileModel(models.Model):
         ('PDF', 'pdf'),
         ('WORD', 'Word'),
         ('EXCEL', 'Excel'),
+        ('ARCHIVE', 'Архив'),
         ('OTHER', 'Другое'),
     )
     extension = models.CharField(
