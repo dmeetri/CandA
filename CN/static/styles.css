@@ -9,6 +9,9 @@ a {
   text-decoration: none;
   color: inherit;
 }
+nav {
+  display: block;
+}
 
 ::selection {
   background-color: #ffcc00;

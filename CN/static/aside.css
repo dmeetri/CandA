@@ -27,3 +27,24 @@ aside {
   padding-bottom: 10px;
 }
 
+.aside-navigation {
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid var(--border-dark);
+  padding-bottom: 10px;
+}
+.aside-navigation a {
+  display: block;
+  border-radius: 3px;
+  padding: 5px 10px;
+}
+
+.profile-button a {
+  display: block;
+  border-radius: 3px;
+  padding: 5px 10px;
+}
+
+.a-aside-nav-hover:hover {
+  background-color: var(--bg-page);
+}
