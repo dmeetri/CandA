@@ -1,5 +1,9 @@
 from django.core.mail import send_mail
 
+import PIL
+
+# === EMAIL ===
+
 def send_email_message(to_email, subject, message):
     try:
         send_mail(
@@ -18,3 +22,8 @@ def send_email_message(to_email, subject, message):
             'success': False,
             'error': f'Ошибка при отправке: {str(e)}'
         }
+
+# === IMAGES ===
+
+def conver_images(images, format):
+    pass
