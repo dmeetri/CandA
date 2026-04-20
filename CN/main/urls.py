@@ -10,4 +10,6 @@ urlpatterns = [
     path('files/detail/<int:pk>/', views.FileDetailView.as_view(), name='filesdetail'),
     path('files/update/<int:pk>/', views.FileUpdateView.as_view(), name='filesupdate'),
     path('files/delete/<int:pk>/', views.FileDeleteView.as_view(), name='filesdelete'),
+
+    path('send', views.my_view, name='send')
 ]
