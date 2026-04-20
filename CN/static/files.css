@@ -30,6 +30,25 @@
   margin-bottom: 10px;
 }
 
+.all-files-filter-form-container {
+  margin-bottom: 20px;
+}
+.all-files-filter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.all-files-filter-form .filter-form-submit {
+  background: var(--accent-color);
+}
+.all-files-filter-form .filter-form-submit:hover {
+  background: var(--accent-color-hover);
+}
+.all-files-filter-form .form-container {
+  display: flex;
+  gap: 10px;
+}
+
 .files-td-id {
   width: 60px;
   text-align: center;

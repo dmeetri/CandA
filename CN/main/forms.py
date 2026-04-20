@@ -1,6 +1,8 @@
 from django import forms
 from . import models
 
+# === FILES ===
+
 class CreateFileForm(forms.ModelForm):
     class Meta:
         model = models.FileModel
@@ -10,3 +12,28 @@ class CreateFileForm(forms.ModelForm):
             'file',
             'extension',
         ]
+
+
+class FilterFilesForm(forms.Form):
+    title = forms.CharField(
+        required=False,
+        widget=forms.TextInput(attrs={'placeholder': 'Название'})
+    )
+    description = forms.CharField(
+        required=False,
+        widget=forms.TextInput(attrs={'placeholder': 'Описание'})
+    )
+    extension = forms.ChoiceField(
+        required=False,
+        choices=[
+            ('', 'Все'),
+            ('VIDEO', 'Видео'),
+            ('IMAGE', 'Картинка'),
+            ('TXT', 'Текст'),
+            ('PDF', 'pdf'),
+            ('WORD', 'Word'),
+            ('EXCEL', 'Excel'),
+            ('ARCHIVE', 'Архив'),
+            ('OTHER', 'Другое'),
+        ]
+    )

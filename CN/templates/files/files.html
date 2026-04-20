@@ -37,6 +37,18 @@
 <section class="main-block all-files-list-files">
   <h2>Все файлы</h2>
 
+  <div class="main-block all-files-filter-form-container">
+    <form class="all-files-filter-form" method="GET" enctype="multipart/form-data">
+      <div class="form-container">
+        {{ filter_form.title }}
+        {{ filter_form.description }}
+        {{ filter_form.extension }}
+      </div>
+
+      <button type="submit" class="filter-form-submit text-regular font-bold">Фильтр</button>
+    </form>
+  </div>
+
   <table class="all-files-table">
     <thead>
       <th >ID</th>
@@ -59,8 +71,8 @@
         <td class="files-td-del">
           <form action="{% url 'filesdelete' file.pk %}" method="post" style="display:inline;">
             {% csrf_token %}
-            <button type="submit" 
-                    class="delete-btn" 
+            <button type="submit"
+                    class="delete-btn"
                     onclick="event.stopPropagation(); return confirm('Удалить файл?')">
               Удалить
             </button>

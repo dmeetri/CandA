@@ -1,5 +1,6 @@
 import json
 
+from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView
 from django.urls import reverse_lazy
@@ -30,8 +31,26 @@ class FilesListView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['disk_usage'] = metrics.get_disk_usega()
+        context['filter_form'] = forms.FilterFilesForm(self.request.GET)
 
         return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        title = self.request.GET.get('title')
+        if title:
+            queryset = queryset.filter(title__icontains=title)
+
+        description = self.request.GET.get('description')
+        if description:
+            queryset = queryset.filter(description__icontains=description)
+
+        extension = self.request.GET.get('extension')
+        if extension:
+            queryset = queryset.filter(extension__icontains=extension)
+
+        return queryset
 
 
 class FileDetailView(DetailView):

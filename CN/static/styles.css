@@ -32,12 +32,13 @@ button:hover {
 
 input {
   width: 100%;
-  padding: 6px;
+  padding: 10px 15px;
   background: var(--bg-gradient);
   border: 1px solid var(--border-dark);
   border-radius: 3px;
   outline: none;
   color: #d1d1d1;
+  font-size: 16px;
 }
 
 :root {
@@ -49,8 +50,8 @@ input {
   --bg-table: #1d2028;
   --bg-gradient: linear-gradient(180deg, #2b303b, #1c1f26);
 
-  --border-light: #4c5366;  
-  --border-dark: #1a182f;   
+  --border-light: #4c5366;
+  --border-dark: #1a182f;
 
   --shadow-sm: 0px 0px 30px 0px rgba(0, 0, 0, 0.4);
   --shadow-md: 0px 0px 24px 8px rgba(13, 15, 20, 0.6);
