@@ -76,10 +76,10 @@
 .files-td-ext {
   text-align: center;
 }
-
-.all-files-table tbody tr:hover :not(:last-child) {
-  background-color: var(--accent-color);
-  cursor: pointer;
+.files-td-actions {
+  padding: 0;
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 /* FILE */

@@ -51,19 +51,14 @@
     <h3>Действия</h3>
 
     <div class="all-files-action-content">
-      <a class="all-files-section-create-button text-regular font-normal" href="{% url 'filescreate' %}">Загрузить</a>
-
-      <button class="text-regular font-normal">Удалить</button>
-
-      <button class="text-regular font-normal">Отправить</button>
+      <a class="all-files-section-create-button text-regular font-normal" href="{% url 'filescreate' %}">
+        Загрузить фйлы
+      </a>
     </div>
   </div>
 
   <table class="main-block">
     <thead>
-      <th>
-        <input type="checkbox">
-      </th>
       <th >ID</th>
       <th>Название</th>
       <th>Описание</th>
@@ -74,15 +69,33 @@
     <tbody>
       {% for file in files %}
       <tr data-href="{% url 'filesdetail' file.pk %}">
-        <td>
-          <input type="checkbox" id="{{ file.pk }}">
-        </td>
         <td class="files-td-id font-bold">{{ file.id }}</td>
         <td class="files-td-title font-bold">{{ file.title }}</td>
         <td class="files-td-desc">{{ file.description }}</td>
         <td class="files-td-ext font-bold">{{ file.extension }}</td>
         <td>{{ file.created_at }}</td>
         <td>{{ file.updated_at }}</td>
+        <!--
+
+        <td class="files-td-actions">
+          <form action="{% url 'filesdelete' file.pk %}" method="post">
+            {% csrf_token %}
+            <button type="submit"
+                    class="text-small font-normal"
+                    onclick="event.stopPropagation(); return confirm('Удалить файл?')">
+              Удалить
+            </button>
+          </form>
+
+          <form action="" method="post">
+            {% csrf_token %}
+            <button type="submit"
+                    class="text-small font-normal">
+              Отправить
+            </button>
+          </form>
+        </td>
+        -->
       </tr>
       {% endfor %}
     </tbody>
