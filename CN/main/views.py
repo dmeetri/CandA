@@ -2,10 +2,12 @@ import json
 
 from django.shortcuts import render
 from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView
+from django.views.decorators.cache import cache_page
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.http import JsonResponse
+from django.utils.decorators import method_decorator
 
 from .services import send_email_message
 
@@ -30,10 +32,12 @@ class FileCreateView(CreateView):
     success_url = reverse_lazy('fileslist')
 
 
+#FIXME @method_decorator(cache_page(60 * 15), name='dispatch')
 class FilesListView(LoginRequiredMixin, ListView):
     model = models.FileModel
     template_name = 'files/files.html'
     context_object_name = 'files'
+    paginate_by = 20
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -42,7 +46,7 @@ class FilesListView(LoginRequiredMixin, ListView):
         return context
 
     def get_queryset(self):
-        queryset = super().get_queryset()
+        queryset = super().get_queryset().only('id', 'title', 'description', 'extension', 'created_at', 'updated_at').order_by('-created_at')
 
         title = self.request.GET.get('title')
         if title:
