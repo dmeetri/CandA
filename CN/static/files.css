@@ -6,7 +6,7 @@
 
 .all-files-info-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 10px;
 }
 .file-info-card {
@@ -16,23 +16,21 @@
 
 .all-files-section-create-button {
   width: 100%;
-}
-.all-files-section-create-button a {
+  text-align: center;
   padding: 10px 15px;
   border-radius: 3px;
   background-color: var(--accent-color);
 }
-.all-files-section-create-button a:hover {
+.all-files-section-create-button:hover {
   background-color: var(--accent-color-hover);
 }
 
-.all-files-list-files h2 {
-  margin-bottom: 10px;
+.all-files-list-files {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
-.all-files-filter-form-container {
-  margin-bottom: 20px;
-}
 .all-files-filter-form-container h3 {
   margin-bottom: 10px;
 }
@@ -52,13 +50,13 @@
   gap: 10px;
 }
 
-.all-files-action-container {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
 .all-files-action-container h3 {
   margin-bottom: 10px;
+}
+.all-files-action-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
 }
 
 .files-td-id {

@@ -30,10 +30,6 @@
   </div>
 </section>
 
-<section class="all-files-section-create-button">
-  <a class="text-regular font-normal" href="{% url 'filescreate' %}">Загрузить</a>
-</section>
-
 <section class="main-block all-files-list-files">
   <h2>Все файлы</h2>
 
@@ -53,6 +49,14 @@
 
   <div class="main-block all-files-action-container">
     <h3>Действия</h3>
+
+    <div class="all-files-action-content">
+      <a class="all-files-section-create-button text-regular font-normal" href="{% url 'filescreate' %}">Загрузить</a>
+
+      <button class="text-regular font-normal">Удалить</button>
+
+      <button class="text-regular font-normal">Отправить</button>
+    </div>
   </div>
 
   <table class="main-block">
@@ -73,16 +77,6 @@
         <td class="files-td-ext font-bold">{{ file.extension }}</td>
         <td class="files-td-create">{{ file.created_at }}</td>
         <td class="files-td-updt">{{ file.updated_at }}</td>
-        <td class="files-td-del">
-          <form action="{% url 'filesdelete' file.pk %}" method="post" style="display:inline;">
-            {% csrf_token %}
-            <button type="submit"
-                    class="delete-btn"
-                    onclick="event.stopPropagation(); return confirm('Удалить файл?')">
-              Удалить
-            </button>
-          </form>
-        </td>
       </tr>
       {% endfor %}
     </tbody>

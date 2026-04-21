@@ -1,5 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+:root {
+  --accent-color: #2f8fb9;
+  --accent-color-hover: #237a9f;
+
+  --bg-page: #1a1c24;
+  --bg-block: #242731;
+  --bg-table: #1d2028;
+  --bg-gradient: linear-gradient(180deg, #2b303b, #1c1f26);
+
+  --border-light: #4c5366;
+  --border-dark: #1a182f;
+
+  --shadow-sm: 0px 0px 30px 0px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0px 0px 24px 8px rgba(13, 15, 20, 0.6);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -40,6 +56,12 @@ input {
   color: #d1d1d1;
   font-size: 16px;
 }
+input:hover {
+  border: 1px solid var(--accent-color-hover);
+}
+input:focus {
+  border: 1px solid var(--accent-color);
+}
 
 select {
   width: 100%;
@@ -49,22 +71,6 @@ select {
   outline: none;
   color: #d1d1d1;
   font-size: 16px;
-}
-
-:root {
-  --accent-color: #2f8fb9;
-  --accent-color-hover: #237a9f;
-
-  --bg-page: #1a1c24;
-  --bg-block: #242731;
-  --bg-table: #1d2028;
-  --bg-gradient: linear-gradient(180deg, #2b303b, #1c1f26);
-
-  --border-light: #4c5366;
-  --border-dark: #1a182f;
-
-  --shadow-sm: 0px 0px 30px 0px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0px 0px 24px 8px rgba(13, 15, 20, 0.6);
 }
 
 body {
