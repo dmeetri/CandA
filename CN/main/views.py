@@ -1,18 +1,25 @@
 import json
 
-from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.mail import send_mail
+from django.contrib.auth.models import User
 from django.http import JsonResponse
 
-from . import models, forms, metrics, services
+from .services import send_email_message, get_disk_usega
+
+from . import models, forms
 
 def home(request):
     return render(request, 'base.html')
 
+# === USERS ===
+
+class ProfileView(DetailView):
+    model = User
+    template_name = 'registration/profile.html'
+    context_object_name = 'user'
 
 # === FILES ===
 
@@ -30,7 +37,7 @@ class FilesListView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['disk_usage'] = metrics.get_disk_usega()
+        context['disk_usage'] = get_disk_usega()
         context['filter_form'] = forms.FilterFilesForm(self.request.GET)
 
         return context
@@ -80,7 +87,7 @@ def send_email(request):
     try:
         data = json.loads(request.body)
 
-        result = services.send_email_message(
+        result = send_email_message(
             to_email=data.get('to'),
             subject=data.get('subject', 'Нет темы'),
             message=data.get('message', '')

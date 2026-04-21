@@ -1,3 +1,5 @@
+/* LOGIN PAGE */
+
 .auth-center-container {
   width: 100%;
   height: 100vh;
@@ -20,3 +22,6 @@
   flex-direction: column;
   gap: 10px;
 }
+
+/* PROFILE */
+

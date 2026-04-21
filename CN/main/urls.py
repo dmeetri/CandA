@@ -5,6 +5,8 @@ from . import views
 urlpatterns = [
     path('', views.home, name='home'),#FIXME - потом переделай на номральную старницу
 
+    #path('profile/<int:pk>', views.profile, name='profile'),
+
     path('files/create/', views.FileCreateView.as_view(), name='filescreate'),
     path('files/list/', views.FilesListView.as_view(), name='fileslist'),
     path('files/detail/<int:pk>/', views.FileDetailView.as_view(), name='filesdetail'),
