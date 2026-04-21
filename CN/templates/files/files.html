@@ -75,7 +75,7 @@
       {% for file in files %}
       <tr data-href="{% url 'filesdetail' file.pk %}">
         <td>
-          <input type="checkbox">
+          <input type="checkbox" id="{{ file.pk }}">
         </td>
         <td class="files-td-id font-bold">{{ file.id }}</td>
         <td class="files-td-title font-bold">{{ file.title }}</td>
@@ -98,6 +98,13 @@
           window.location.href = row.dataset.href;
         });
       });
+  });
+
+  // Нормальный клик на чекбокс
+  document.querySelectorAll('tbody tr td:first-child input[type="checkbox"]').forEach(checkbox => {
+    checkbox.addEventListener('click', function(event) {
+      event.stopPropagation();
+    });
   });
 </script>
 {% endblock %}

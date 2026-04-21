@@ -128,9 +128,14 @@ th {
   background: var(--bg-gradient);
   padding: 10px;
 }
-
+tbody tr {
+  cursor: pointer;
+}
+tbody tr:hover {
+  background-color: var(--accent-color-hover);
+}
 td {
-  padding: 5px;
+  padding: 7px;
   border-bottom: 1px solid var(--border-light);
   border-right: 1px solid var(--border-light);
 }
