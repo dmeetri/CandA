@@ -1,8 +1,5 @@
 aside {
   width: 260px;
-  max-width: 260px;
-  min-width: 100px;
-  resize: horizontal;
   overflow: auto;
 
   height: 100vh;

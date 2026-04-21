@@ -33,6 +33,9 @@
 .all-files-filter-form-container {
   margin-bottom: 20px;
 }
+.all-files-filter-form-container h3 {
+  margin-bottom: 10px;
+}
 .all-files-filter-form {
   display: flex;
   flex-direction: column;
@@ -47,6 +50,15 @@
 .all-files-filter-form .form-container {
   display: flex;
   gap: 10px;
+}
+
+.all-files-action-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.all-files-action-container h3 {
+  margin-bottom: 10px;
 }
 
 .files-td-id {

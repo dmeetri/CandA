@@ -38,6 +38,8 @@
   <h2>Все файлы</h2>
 
   <div class="main-block all-files-filter-form-container">
+    <h3>Фильтрация</h3>
+
     <form class="all-files-filter-form" method="GET" enctype="multipart/form-data">
       <div class="form-container">
         {{ filter_form.title }}
@@ -49,6 +51,10 @@
     </form>
   </div>
 
+  <div class="main-block all-files-action-container">
+    <h3>Действия</h3>
+  </div>
+
   <table class="main-block">
     <thead>
       <th >ID</th>
@@ -57,7 +63,6 @@
       <th>Расширение</th>
       <th>Создан</th>
       <th>Обновлен</th>
-      <th>Удалить</th>
     </thead>
     <tbody>
       {% for file in files %}

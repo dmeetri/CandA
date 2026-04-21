@@ -149,3 +149,14 @@ main {
   padding: 20px;
   overflow-y: auto;
 }
+
+@media (max-width: 1050px) {
+  main {
+    padding: 10px;
+  }
+}
+@media (max-width: 801px) {
+  main {
+    padding: 5px;
+  }
+}
