@@ -1,9 +1,6 @@
-import shutil
-
 from PIL import Image
 
 from django.core.mail import send_mail
-from django.conf import settings
 
 # === EMAIL ===
 
@@ -25,26 +22,6 @@ def send_email_message(to_email, subject, message):
             'success': False,
             'error': f'Ошибка при отправке: {str(e)}'
         }
-
-# === SYSTEM METRICS ===
-
-def get_disk_usega(path='/'):
-    '''
-    result = send_email_message(
-        to_email=settings.EMAIL_FOR_SEND,
-        subject='C&A WARNING',
-        message="efnjn"
-    )
-    '''
-
-    total, used, free = shutil.disk_usage(path)
-
-    return {
-        "total": total / 1073741824,
-        "used": used / 1073741824,
-        "free": free / 1073741824,
-        "percent_used": (used / total) * 100,
-    }
 
 # === IMAGES ===
 

@@ -1,22 +1,5 @@
 /* FILES */
 
-.all-files-container-metrics {
-  margin-bottom: 70px;
-}
-.all-files-container-metrics h2 {
-  margin-bottom: 10px;
-}
-
-.all-files-info-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px;
-}
-.file-info-card {
-  width: 100%;
-  background: var(--bg-gradient);
-}
-
 .all-files-section-create-button {
   width: 100%;
   text-align: center;

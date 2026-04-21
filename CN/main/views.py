@@ -7,7 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 
-from .services import send_email_message, get_disk_usega
+from .services import send_email_message
 
 from . import models, forms
 
@@ -37,7 +37,6 @@ class FilesListView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['disk_usage'] = get_disk_usega()
         context['filter_form'] = forms.FilterFilesForm(self.request.GET)
 
         return context

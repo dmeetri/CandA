@@ -8,28 +8,6 @@
 {% block title %}Файлы{% endblock %}
 
 {% block content %}
-<section class="main-block all-files-container-metrics">
-  <h2>Метрика диска</h2>
-
-  <div class="all-files-info-container">
-    <div class="file-info-card main-block">
-      <p class="text-small font-bold">Записи: {{ files|length }}</p>
-    </div>
-
-    <div class="file-info-card main-block">
-      <p class="text-small font-bold">Всего: {{ disk_usage.total|stringformat:".2f" }} GB</p>
-    </div>
-
-    <div class="file-info-card main-block">
-      <p class="text-small font-bold">Использовано: {{ disk_usage.used|stringformat:".2f" }} GB ({{ disk_usage.percent_used|floatformat:1 }}%)</p>
-    </div>
-
-    <div class="file-info-card main-block">
-      <p class="text-small font-bold">Свободно: {{ disk_usage.free|stringformat:".2f" }} GB</p>
-    </div>
-  </div>
-</section>
-
 <section class="all-files-list-files">
   <h2>Все файлы</h2>
 
