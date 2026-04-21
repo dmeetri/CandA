@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django_cleanup.apps.CleanupConfig',
+    'storages',
 
     'main',
 ]
@@ -90,8 +91,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static/'
 ]
 
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media/'
+# === AUTH ===
 
 AUTH_USER_MODEL = 'main.CustomUser'
 
@@ -116,3 +116,43 @@ EMAIL_FOR_SEND = os.getenv('EMAIL_FOR_SEND')
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER
+
+# === ES3 === MEDIA ===
+
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+
+AWS_S3_ENDPOINT_URL = os.getenv('AWS_S3_ENDPOINT_URL')
+AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME')
+
+AWS_DEFAULT_ACL = 'public-read'
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+
+AWS_QUERYSTRING_AUTH = False
+
+STORAGES = {
+    'default': {
+        'BACKEND': 'storages.backends.s3boto3.S3Boto3Storage',
+        'OPTIONS': {
+            'access_key': AWS_ACCESS_KEY_ID,
+            'secret_key': AWS_SECRET_ACCESS_KEY,
+            'bucket_name': AWS_STORAGE_BUCKET_NAME,
+            'endpoint_url': AWS_S3_ENDPOINT_URL,
+            'region_name': AWS_S3_REGION_NAME,
+            'default_acl': AWS_DEFAULT_ACL,
+            'querystring_auth': AWS_QUERYSTRING_AUTH,
+            'location': 'media',
+        },
+    },
+    'staticfiles': {
+        'BACKEND': 'django.contrib.staticfiles.storage.StaticFilesStorage',
+        'OPTIONS': {
+            'location': os.path.join(BASE_DIR, 'staticfiles'),
+        },
+    }
+}
+
+MEDIA_URL = f'{AWS_S3_ENDPOINT_URL}/{AWS_STORAGE_BUCKET_NAME}/media/'
