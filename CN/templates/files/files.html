@@ -61,6 +61,9 @@
 
   <table class="main-block">
     <thead>
+      <th>
+        <input type="checkbox">
+      </th>
       <th >ID</th>
       <th>Название</th>
       <th>Описание</th>
@@ -71,12 +74,15 @@
     <tbody>
       {% for file in files %}
       <tr data-href="{% url 'filesdetail' file.pk %}">
+        <td>
+          <input type="checkbox">
+        </td>
         <td class="files-td-id font-bold">{{ file.id }}</td>
         <td class="files-td-title font-bold">{{ file.title }}</td>
         <td class="files-td-desc">{{ file.description }}</td>
         <td class="files-td-ext font-bold">{{ file.extension }}</td>
-        <td class="files-td-create">{{ file.created_at }}</td>
-        <td class="files-td-updt">{{ file.updated_at }}</td>
+        <td>{{ file.created_at }}</td>
+        <td>{{ file.updated_at }}</td>
       </tr>
       {% endfor %}
     </tbody>
