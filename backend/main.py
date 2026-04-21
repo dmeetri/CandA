@@ -1,27 +1,14 @@
 import uvicorn
-
 from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
 
-from api.deps import get_db
-from models.user import User
-from schemas.user import UserCreate, UserResponse
+from main.database import get_db
+from main.models import FileModel
+from main.routes import router as file_router
 
 app = FastAPI()
+app.include_router(file_router)
 
-
-@app.post("/users", response_model=UserResponse)
-def create_user(user: UserCreate, db: Session = Depends(get_db)):
-    db_user = User(email=user.email, name=user.name)
-    db.add(db_user)
-    db.commit()
-    db.refresh(db_user)
-    return db_user
-
-
-@app.get("/users")
-def get_users(db: Session = Depends(get_db)):
-    return db.query(User).all()
 
 if __name__ == '__main__':
     uvicorn.run(

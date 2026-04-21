@@ -8,8 +8,8 @@ from alembic import context
 import os
 from dotenv import load_dotenv
 
-from database.base import Base
-from models.user import User
+from main.database import Base
+from main.models import FileModel
 
 load_dotenv()
 
