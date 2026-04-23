@@ -1,5 +1,11 @@
 /* ALL FILES */
 
+@media (max-width: 750px) {
+  .all-files-form-content {
+    flex-direction: column;
+  }
+}
+
 /* TABLE */
 
 .files-td-title {
