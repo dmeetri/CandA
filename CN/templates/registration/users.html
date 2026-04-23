@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'auth.css' %}">
+{% endblock %}
+
+{% block title %}ПОльзователи{% endblock %}
+
+{% block content %}
+<section class="main-block gap-v-30">
+  <h2>Все пользователи</h2>
+
+  <div class="main-block gap-v-10">
+    <table class="main-block">
+      <thead>
+        <th >ID</th>
+        <th>Username</th>
+        <th>Почта</th>
+        <th>Роль</th>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr>
+          <td class="font-center font-bold">{{ user.id }}</td>
+          <td class="font-bold">{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.roles }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}

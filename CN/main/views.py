@@ -1,11 +1,12 @@
 import json
 
+from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView
 from django.views.decorators.cache import cache_page
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
 
@@ -18,10 +19,16 @@ def home(request):
 
 # === USERS ===
 
-class ProfileView(DetailView):
+User = get_user_model()
+
+class UsersListView(ListView):
     model = User
-    template_name = 'registration/profile.html'
-    context_object_name = 'user'
+    template_name = 'registration/users.html'
+    context_object_name = 'users'
+    paginate_by = 20
+
+    def get_queryset(self):
+        return super().get_queryset().only('id', 'username', 'email', 'roles')
 
 # === FILES ===
 
