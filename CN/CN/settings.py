@@ -86,6 +86,11 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static/'
 ]
 
+# === NGINX ===
+
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 # === AUTH ===
 
 AUTH_USER_MODEL = 'main.CustomUser'
