@@ -1,6 +1,5 @@
 import json
 
-from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView
 from django.views.decorators.cache import cache_page
