@@ -13,9 +13,6 @@ from .services import send_email_message
 
 from . import models, forms
 
-def home(request):
-    return render(request, 'base.html')
-
 # === USERS ===
 
 User = get_user_model()
