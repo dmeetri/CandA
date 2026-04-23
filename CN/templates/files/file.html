@@ -12,26 +12,58 @@
   <h2>Детали по файлу: {{ file.title }}</h2>
 
   <div class="main-block gap-v-10">
-    <h3>Изображение</h3>
+    <h3>Основная информация</h3>
 
-    <div class="gap-h-10">
+    <div class="gap-h-10 file-det-all-info">
       <div class="file-det-preview">
         {% if file.extension == "PNG" or file.extension == "JPG" or file.extension == "JPEG" or file.extension == "WEBP" %}
         <img
-          width="500px"
+          width="100%"
           src="https://s3.twcstorage.ru/f82ce622-48ed-4960-af9b-5be38e2c99d4/media/{{ file.file }}"
         />
+        {% elif file.extension == "VIDEO" %}
+        <video
+          controls
+          width="100%"
+        >
+          <source src="https://s3.twcstorage.ru/f82ce622-48ed-4960-af9b-5be38e2c99d4/media/{{ file.file }}">
+        </video>
         {% elif file.extension == "WORD" %}
         <a href="https://s3.twcstorage.ru/f82ce622-48ed-4960-af9b-5be38e2c99d4/media/{{ file.file }}">Скачать файл {{ file.extension }}</ф>
         {% endif %}
       </div>
+
+      <div class="file-det-info gap-v-20">
+        <h3>Информация</h3>
+
+        <div class="gap-v-10">
+          <p class="text-regular font-normal">Заголовок: <span class="text-small font-light">{{ file.title }}</span></p>
+          <p class="text-regular font-normal">Описание: <span class="text-small font-light">{{ file.description }}</span></p>
+          <p class="text-regular font-normal">Расширение: <span class="text-small font-light">{{ file.extension }}</span></p>
+          <p class="text-regular font-normal">Создан: <span class="text-small font-light">{{ file.created_at }}</span></p>
+          <p class="text-regular font-normal">Обновлен: <span class="text-small font-light">{{ file.updated_at }}</span></p>
+        </div>
+      </div>
     </div>
   </div>
-  {{ file.title }}
-  {{ file.description }}
-  {{ file.file }}
-  {{ file.extension }}
-  {{ file.created_at }}
-  {{ file.updated_at }}
+
+  <div class="main-block gap-v-30">
+    <h3>Действия</h3>
+
+    <div class="gap-h-10">
+      <form action="{% url 'filesdelete' file.pk %}" method="post">
+        {% csrf_token %}
+        <button type="submit"
+                class="text-regular font-normal"
+                onclick="event.stopPropagation(); return confirm('Удалить файл?')">
+          Удалить
+        </button>
+      </form>
+
+      <button class="text-regular font-normal">На почту</button>
+
+      <button class="text-regular font-normal">Сохранить</button>
+    </div>
+  </div>
 </section>
 {% endblock %}

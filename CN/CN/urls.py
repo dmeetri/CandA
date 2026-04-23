@@ -4,5 +4,5 @@ from django.conf import settings
 
 urlpatterns = [
     path('', include('django.contrib.auth.urls')),
-    path('', include('main.urls')),
+    path('manager/', include('main.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

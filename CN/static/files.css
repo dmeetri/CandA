@@ -36,8 +36,19 @@
 
 /* ONE FILE */
 
+@media (max-width: 1500px) {
+  .file-det-all-info {
+    display: block;
+  }
+}
+
 .file-det-preview {
-  width: 600px;
+  min-width: 600px;
+}
+.file-det-info {
+  width: 100%;
+  border-left: 1px solid var(--border-light);
+  padding-left: 10px;
 }
 
 /* LOAD FILE */
