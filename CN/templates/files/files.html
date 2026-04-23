@@ -86,5 +86,14 @@
 </div>
 </section>
 
-<script src="{% static 'ls/all_files.js' %}"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+  const rows = document.querySelectorAll("tr[data-href]");
+    rows.forEach(row => {
+      row.addEventListener("click", () => {
+        window.location.href = row.dataset.href;
+      });
+    });
+  });
+</script>
 {% endblock %}
