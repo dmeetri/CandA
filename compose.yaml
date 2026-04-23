@@ -1,0 +1,17 @@
+services:
+  web:
+    build: .
+    container_name: django_app
+    working_dir: /app
+    command: gunicorn CN.wsgi:application --bind 0.0.0.0:8000 --workers 3
+    volumes:
+      - ./CN:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=CN.settings
+      - PYTHONPATH=/app
+      - DEBUG=False
+    env_file:
+      - CN/.env
+    restart: unless-stopped
