@@ -18,7 +18,7 @@ from . import models, forms
 User = get_user_model()
 
 @method_decorator(cache_page(60 * 15), name='dispatch')
-class UsersListView(ListView):
+class UsersListView(LoginRequiredMixin, ListView):
     model = User
     template_name = 'registration/users.html'
     context_object_name = 'users'
@@ -29,7 +29,7 @@ class UsersListView(ListView):
 
 # === FILES ===
 
-class FileCreateView(CreateView):
+class FileCreateView(LoginRequiredMixin, CreateView):
     model = models.FileModel
     form_class = forms.CreateFileForm
     template_name = 'files/create_file.html'
@@ -67,20 +67,20 @@ class FilesListView(LoginRequiredMixin, ListView):
         return queryset
 
 
-class FileDetailView(DetailView):
+class FileDetailView(LoginRequiredMixin, DetailView):
     model = models.FileModel
     template_name = 'files/file.html'
     context_object_name = 'file'
 
 
-class FileUpdateView(UpdateView):
+class FileUpdateView(LoginRequiredMixin, UpdateView):
     model = models.FileModel
     form_class = forms.CreateFileForm
     template_name = 'files/file.html'
     success_url = reverse_lazy('filesdetail')
 
 
-class FileDeleteView(DeleteView):
+class FileDeleteView(LoginRequiredMixin, DeleteView):
     model = models.FileModel
     success_url = reverse_lazy('fileslist')
 
