@@ -21,6 +21,7 @@ def home(request):
 
 User = get_user_model()
 
+@method_decorator(cache_page(60 * 15), name='dispatch')
 class UsersListView(ListView):
     model = User
     template_name = 'registration/users.html'
@@ -39,7 +40,7 @@ class FileCreateView(CreateView):
     success_url = reverse_lazy('fileslist')
 
 
-#FIXME @method_decorator(cache_page(60 * 15), name='dispatch')
+@method_decorator(cache_page(60 * 15), name='dispatch')
 class FilesListView(LoginRequiredMixin, ListView):
     model = models.FileModel
     template_name = 'files/files.html'
