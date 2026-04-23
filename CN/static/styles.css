@@ -251,3 +251,15 @@ main {
     margin-top: 70px;
   }
 }
+
+@media (hover: hover) {
+  .a-button:hover {
+    background-color: var(--accent-color-hover);
+  }
+  input:hover {
+    border: 1px solid var(--accent-color-hover);
+  }
+  button:hover {
+  background: var(--accent-color-hover);
+}
+}
