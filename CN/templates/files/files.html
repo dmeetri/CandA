@@ -8,24 +8,24 @@
 {% block title %}Файлы{% endblock %}
 
 {% block content %}
-<section class="main-block gap-h-30">
+<section class="main-block gap-v-30">
   <h2>Все файлы</h2>
 
-  <div class="main-block gap-h-10">
+  <div class="main-block gap-v-10">
     <h3>Действия</h3>
 
-    <div class="gap-h-10">
+    <div class="gap-v-10">
       <a class="a-button text-regular font-normal" href="{% url 'filescreate' %}">
         Загрузить фйлы
       </a>
     </div>
   </div>
 
-  <div class="main-block gap-h-10">
+  <div class="main-block gap-v-10">
     <h3>Фильтрация</h3>
 
-    <form method="GET" enctype="multipart/form-data" class="gap-h-20">
-      <div class="gap-v-10">
+    <form method="GET" enctype="multipart/form-data" class="gap-v-20">
+      <div class="gap-h-10">
         {{ filter_form.title }}
         {{ filter_form.description }}
         {{ filter_form.extension }}

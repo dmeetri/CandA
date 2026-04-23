@@ -4,9 +4,20 @@
 {% block title %}Загрузить файл{% endblock %}
 
 {% block content %}
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Загрузить</button>
-</form>
+<section class="main-block gap-v-30">
+  <h2>Загрузка файлов</h2>
+
+  <form method="post" enctype="multipart/form-data" class="gap-v-30">
+    {% csrf_token %}
+
+    <div class="gap-v-10">
+      {{ form.file }}
+      {{ form.extension }}
+      {{ form.title }}
+      {{ form.description }}
+    </div>
+
+    <button type="submit" class="blue-button text-regular font-normal">Загрузить</button>
+  </form>
+</section>
 {% endblock %}

@@ -81,32 +81,32 @@ button:hover {
 
 /* GAP VERTICAL */
 
-.gap-v-10 {
+.gap-h-10 {
   display: flex;
   gap: 10px;
 }
-.gap-v-20 {
+.gap-h-20 {
   display: flex;
   gap: 20px;
 }
-.gap-v-30 {
+.gap-h-30 {
   display: flex;
   gap: 30px;
 }
 
 /* GAP HORISONTAL */
 
-.gap-h-10 {
+.gap-v-10 {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.gap-h-20 {
+.gap-v-20 {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-.gap-h-30 {
+.gap-v-30 {
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -137,6 +137,8 @@ input:hover {
 input:focus {
   border: 1px solid var(--accent-color);
 }
+
+/* SELECT */
 
 select {
   width: 100%;

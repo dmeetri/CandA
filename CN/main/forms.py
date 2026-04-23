@@ -4,6 +4,15 @@ from . import models
 # === FILES ===
 
 class CreateFileForm(forms.ModelForm):
+    title = forms.CharField(
+        required=False,
+        widget=forms.TextInput(attrs={'placeholder': 'Название'})
+    )
+    description = forms.CharField(
+        required=False,
+        widget=forms.TextInput(attrs={'placeholder': 'Описание'})
+    )
+
     class Meta:
         model = models.FileModel
         fields = [
