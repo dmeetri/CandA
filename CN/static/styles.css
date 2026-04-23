@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+/* ROOT */
+
 :root {
   --accent-color: #2f8fb9;
   --accent-color-hover: #237a9f;
@@ -21,16 +23,35 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  color: #d1d1d1;
+
+  background-color: var(--bg-page);
+}
+
+/* LINK BUTTONS */
+
 a {
   text-decoration: none;
   color: inherit;
 }
-nav {
-  display: block;
+.a-button {
+  width: 100%;
+  text-align: center;
+  padding: 10px 15px;
+  border-radius: 3px;
+  background-color: var(--accent-color);
 }
-section {
-  margin-bottom: 32px;
+.a-button:hover {
+  background-color: var(--accent-color-hover);
 }
+
+/* BUTTONS */
 
 button {
   width: 100%;
@@ -45,6 +66,60 @@ button {
 button:hover {
   background: var(--accent-color-hover);
 }
+.blue-button {
+  background: var(--accent-color);
+}
+
+/* DISPALYS */
+
+.flex {
+  display: flex;
+}
+.block {
+  display: block;
+}
+
+/* GAP VERTICAL */
+
+.gap-v-10 {
+  display: flex;
+  gap: 10px;
+}
+.gap-v-20 {
+  display: flex;
+  gap: 20px;
+}
+.gap-v-30 {
+  display: flex;
+  gap: 30px;
+}
+
+/* GAP HORISONTAL */
+
+.gap-h-10 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.gap-h-20 {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.gap-h-30 {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+nav {
+  display: block;
+}
+section {
+  margin-bottom: 30px;
+}
+
+/* INPUT */
 
 input {
   width: 100%;
@@ -73,15 +148,7 @@ select {
   font-size: 16px;
 }
 
-body {
-  font-family: "Inter", sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  color: #d1d1d1;
-
-  background-color: var(--bg-page);
-}
+/* MAIN BLOCK */
 
 .main-block {
   padding: 10px;
@@ -93,6 +160,20 @@ body {
 
 /* FONTS */
 
+/* TEXT ALING */
+
+.font-left {
+  text-align: left;
+}
+.font-right {
+  text-align: right;
+}
+.font-center {
+  text-align: center;
+}
+
+/* FONT SIZE */
+
 .text-small {
   font-size: 14px;
 }
@@ -102,6 +183,8 @@ body {
 .text-large {
   font-size: 22px;
 }
+
+/* FONT WEIGHT */
 
 .font-light {
   font-weight: 400;
@@ -128,23 +211,13 @@ th {
   background: var(--bg-gradient);
   padding: 10px;
 }
-tbody tr {
-  cursor: pointer;
-}
-tbody tr:hover {
-  background-color: var(--accent-color-hover);
-}
 td {
   padding: 7px;
   border-bottom: 1px solid var(--border-light);
   border-right: 1px solid var(--border-light);
 }
 
-table tbody tr:nth-of-type(even) {
-  background-color: var(--bg-table);
-}
-
-/* MAIN PAGE */
+/* BASE PAGE */
 
 .root-container {
   position: fixed;

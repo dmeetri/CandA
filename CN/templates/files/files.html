@@ -8,31 +8,30 @@
 {% block title %}Файлы{% endblock %}
 
 {% block content %}
-<section class="main-block all-files-list-files">
+<section class="main-block gap-h-30">
   <h2>Все файлы</h2>
 
-  <div class="main-block all-files-action-container">
-    <!--FIXME добавь действия выпадающем списком над таблицей-->
+  <div class="main-block gap-h-10">
     <h3>Действия</h3>
 
-    <div class="all-files-action-content">
-      <a class="all-files-section-create-button text-regular font-normal" href="{% url 'filescreate' %}">
+    <div class="gap-h-10">
+      <a class="a-button text-regular font-normal" href="{% url 'filescreate' %}">
         Загрузить фйлы
       </a>
     </div>
   </div>
 
-  <div class="main-block all-files-filter-form-container">
+  <div class="main-block gap-h-10">
     <h3>Фильтрация</h3>
 
-    <form class="all-files-filter-form" method="GET" enctype="multipart/form-data">
-      <div class="form-container">
+    <form method="GET" enctype="multipart/form-data" class="gap-h-20">
+      <div class="gap-v-10">
         {{ filter_form.title }}
         {{ filter_form.description }}
         {{ filter_form.extension }}
       </div>
 
-      <button type="submit" class="filter-form-submit text-regular font-bold">Фильтр</button>
+      <button type="submit" class="blue-button text-regular font-bold">Фильтр</button>
     </form>
   </div>
 
@@ -44,21 +43,32 @@
       <th>Расширение</th>
       <th>Создан</th>
       <th>Обновлен</th>
+      <th>Удалить</th>
     </thead>
-    <tbody>
+    <tbody class="all-files-table">
       {% for file in files %}
       <tr data-href="{% url 'filesdetail' file.pk %}">
-        <td class="files-td-id font-bold">{{ file.id }}</td>
+        <td class="font-center font-bold">{{ file.id }}</td>
         <td class="files-td-title font-bold">{{ file.title }}</td>
         <td class="files-td-desc">{{ file.description }}</td>
-        <td class="files-td-ext font-bold">{{ file.extension }}</td>
-        <td>{{ file.created_at }}</td>
-        <td>{{ file.updated_at }}</td>
+        <td class="small-cell font-center font-bold">{{ file.extension }}</td>
+        <td class="small-cell">{{ file.created_at }}</td>
+        <td class="small-cell">{{ file.updated_at }}</td>
+        <td class="last-cell">
+          <form action="{% url 'filesdelete' file.pk %}" method="post">
+            {% csrf_token %}
+            <button type="submit"
+                    class="font-normal"
+                    onclick="event.stopPropagation(); return confirm('Удалить файл?')">
+              Удалить
+            </button>
+        </td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
 
+  <!-- FIXME потом сделай стили -->
   <div class="pagination">
     {% if page_obj.has_previous %}
         <a href="?page=1">&laquo; Первая</a>
