@@ -26,6 +26,11 @@
         <div class="profile-button">
           <a href="#" class="a-aside-nav-hover text-regular font-normal">Профиль</a>
         </div>
+
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="text-regular font-normal">Выйти</button>
+          </form>
       </div>
     </aside>
 
