@@ -65,7 +65,7 @@
         <td class="small-cell">{{ file.created_at|date:"d.m.Y H:i" }}</td>
         <td class="small-cell">{{ file.updated_at|date:"d.m.Y H:i" }}</td>
         <td class="last-cell">
-          <form action="{% url 'filesdelete' file.pk %}" method="post">
+          <form action="{% url 'filesdelete' file.pk %}" method="post"> <!--FIXME удалние файлов одекватное -->
             {% csrf_token %}
             <button type="submit"
                     class="font-normal"
