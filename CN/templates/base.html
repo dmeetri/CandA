@@ -26,19 +26,41 @@
 
   <div class="root-container">
     <aside>
-      <div class="aside-container">
+      <div class="gap-v-10">
         <div class="aside-header-content">
           <h1>C&N</h1>
         </div>
 
         <nav class="aside-navigation">
-          <a href="#" class="a-aside-nav-hover text-regular font-normal">Дашборд</a>
-          <a href="{% url 'fileslist' %}" class="a-aside-nav-hover text-regular font-normal">Файлы</a>
-          <a href="{% url 'userslist' %}" class="a-aside-nav-hover text-regular font-normal">Пользователи</a>
+          <div class="aside-nav-section">
+            <h4>Админка</h4>
+
+            <div class="gap-v-10">
+              <a href="#" class="a-aside-nav-hover text-regular">Дашборд</a>
+            </div>
+          </div>
+
+          <div class="aside-nav-section">
+            <h4>Пользователи</h4>
+
+            <div class="gap-v-10">
+              <a href="{% url 'userslist' %}" class="a-aside-nav-hover text-regular">Группы</a>
+              <a href="{% url 'userslist' %}" class="a-aside-nav-hover text-regular">Пользователи</a>
+            </div>
+          </div>
+
+          <div class="aside-nav-section">
+            <h4>Файлы</h4>
+
+            <div class="gap-v-10">
+              <a href="{% url 'fileslist' %}" class="a-aside-nav-hover text-regular">Загрузить</a>
+              <a href="{% url 'fileslist' %}" class="a-aside-nav-hover text-regular">Все файлы</a>
+            </div>
+          </div>
         </nav>
 
         <div class="profile-button">
-          <a href="#" class="a-aside-nav-hover text-regular font-normal">Профиль</a>
+          <a href="#" class="a-aside-nav-hover text-regular">Профиль</a>
         </div>
 
         <form method="post" action="{% url 'logout' %}">

@@ -10,37 +10,32 @@ aside {
   border-right: 1px solid var(--border-light);
   box-shadow: var(--shadow-sm);
 }
-.aside-container {
-  padding: 10px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
 
 .aside-header-content {
-  border-bottom: 1px solid var(--border-light);
-  padding-bottom: 10px;
+  padding: 10px;
 }
 
 .aside-navigation {
   display: block;
   width: 100%;
+}
+
+.aside-nav-section {
+  margin-bottom: 20px;
+}
+.aside-nav-section h4 {
   border-bottom: 1px solid var(--border-light);
-  padding-bottom: 10px;
+  padding-bottom: 5px;
+  padding-left: 10px;
 }
-.aside-navigation a {
-  display: block;
-  border-radius: 3px;
-  padding: 5px 10px;
-}
-
-.profile-button a {
-  display: block;
-  border-radius: 3px;
-  padding: 5px 10px;
+.aside-nav-section div {
+  gap: 0;
 }
 
+.a-aside-nav-hover {
+  margin-top: 3px;
+  padding: 5px 10px;
+}
 .a-aside-nav-hover:hover {
   background-color: var(--accent-color);
 }

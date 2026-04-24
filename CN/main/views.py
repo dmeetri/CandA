@@ -17,7 +17,7 @@ from . import models, forms
 
 User = get_user_model()
 
-@method_decorator(cache_page(60 * 15), name='dispatch')
+#@method_decorator(cache_page(60 * 15), name='dispatch')
 class UsersListView(LoginRequiredMixin, ListView):
     model = User
     template_name = 'registration/users.html'
@@ -36,7 +36,7 @@ class FileCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('fileslist')
 
 
-@method_decorator(cache_page(60 * 15), name='dispatch')
+#@method_decorator(cache_page(60 * 15), name='dispatch')
 class FilesListView(LoginRequiredMixin, ListView):
     model = models.FileModel
     template_name = 'files/files.html'
@@ -63,10 +63,10 @@ class FilesListView(LoginRequiredMixin, ListView):
 
         if search_query:
             queryset = queryset.filter(
-                Q(title__icontains=search_query) | 
+                Q(title__icontains=search_query) |
                 Q(description__icontains=search_query)
             )
-            
+
         if extension:
             queryset = queryset.filter(extension=extension)
 
