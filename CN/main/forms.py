@@ -37,7 +37,9 @@ class FilterFilesForm(forms.Form):
         choices=[
             ('', 'Все'),
             ('VIDEO', 'Видео'),
-            ('IMAGE', 'Картинка'),
+            ('PNG', 'png'),
+            ('JPEG', 'jpeg'),
+            ('WEB', 'web'),
             ('TXT', 'Текст'),
             ('PDF', 'pdf'),
             ('WORD', 'Word'),
