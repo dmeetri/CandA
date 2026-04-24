@@ -7,6 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import get_user_model
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
+from django.db.models import Q
 
 from .services import send_email_message
 
@@ -53,19 +54,21 @@ class FilesListView(LoginRequiredMixin, ListView):
         return context
 
     def get_queryset(self):
-        queryset = super().get_queryset().only('id', 'title', 'description', 'extension', 'created_at', 'updated_at').order_by('-updated_at')
+        queryset = super().get_queryset().only(
+            'id', 'title', 'description', 'extension', 'created_at', 'updated_at'
+        ).order_by('-updated_at')
 
-        title = self.request.GET.get('title')
-        if title:
-            queryset = queryset.filter(title__icontains=title)
-
-        description = self.request.GET.get('description')
-        if description:
-            queryset = queryset.filter(description__icontains=description)
-
+        search_query = self.request.GET.get('search')
         extension = self.request.GET.get('extension')
+
+        if search_query:
+            queryset = queryset.filter(
+                Q(title__icontains=search_query) | 
+                Q(description__icontains=search_query)
+            )
+            
         if extension:
-            queryset = queryset.filter(extension__icontains=extension)
+            queryset = queryset.filter(extension=extension)
 
         return queryset
 

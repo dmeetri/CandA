@@ -24,13 +24,9 @@ class CreateFileForm(forms.ModelForm):
 
 
 class FilterFilesForm(forms.Form):
-    title = forms.CharField(
+    search = forms.CharField(
         required=False,
-        widget=forms.TextInput(attrs={'placeholder': 'Название'})
-    )
-    description = forms.CharField(
-        required=False,
-        widget=forms.TextInput(attrs={'placeholder': 'Описание'})
+        widget=forms.TextInput(attrs={'placeholder': 'Поиск'})
     )
     extension = forms.ChoiceField(
         required=False,
