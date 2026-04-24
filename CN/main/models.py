@@ -17,17 +17,6 @@ class CustomUser(AbstractUser):
     )
     email_confirmed = models.BooleanField(default=False)
 
-    USER_ROLES = (
-        ('FULLADMIN', 'Гл.Админ'),
-        ('ADMIN', 'Админ'),
-        ('USER', 'Пользователь'),
-        ('VIEWER', 'Наблюдатель'),
-    )
-    roles = models.CharField(
-        choices=USER_ROLES,
-        default='VIEWER',
-    )
-
 
 class FileModel(models.Model):
     title = models.CharField(max_length=200)

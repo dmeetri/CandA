@@ -17,7 +17,6 @@
         <th >ID</th>
         <th>Username</th>
         <th>Почта</th>
-        <th>Роль</th>
       </thead>
       <tbody>
         {% for user in users %}
@@ -25,7 +24,6 @@
           <td class="font-center font-bold">{{ user.id }}</td>
           <td class="font-bold">{{ user.username }}</td>
           <td>{{ user.email }}</td>
-          <td>{{ user.roles }}</td>
         </tr>
         {% endfor %}
       </tbody>

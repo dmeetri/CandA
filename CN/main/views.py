@@ -25,7 +25,7 @@ class UsersListView(LoginRequiredMixin, ListView):
     paginate_by = 20
 
     def get_queryset(self):
-        return super().get_queryset().only('id', 'username', 'email', 'roles')
+        return super().get_queryset().only('id', 'username', 'email')
 
 # === FILES ===
 
