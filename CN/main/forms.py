@@ -5,7 +5,7 @@ from . import models
 
 class CreateFileForm(forms.ModelForm):
     title = forms.CharField(
-        required=False,
+        required=True,
         widget=forms.TextInput(attrs={'placeholder': 'Название'})
     )
     description = forms.CharField(
