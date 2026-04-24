@@ -1,6 +1,5 @@
 import json
 
-from django.shortcuts import render
 from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView
 from django.views.decorators.cache import cache_page
 from django.urls import reverse_lazy
@@ -36,7 +35,7 @@ class FileCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('fileslist')
 
 
-@method_decorator(cache_page(60 * 15), name='dispatch')
+#@method_decorator(cache_page(60 * 15), name='dispatch')
 class FilesListView(LoginRequiredMixin, ListView):
     model = models.FileModel
     template_name = 'files/files.html'
