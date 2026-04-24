@@ -11,6 +11,29 @@
 <section class="main-block gap-v-30">
   <h2>Детали по файлу: {{ file.title }}</h2>
 
+  <div class="main-block gap-v-30">
+    <h3>Действия</h3>
+
+    <div class="gap-h-10">
+      <form action="{% url 'filesdelete' file.pk %}" method="post">
+        {% csrf_token %}
+        <button type="submit"
+                class="text-regular font-normal"
+                onclick="event.stopPropagation(); return confirm('Удалить файл?')">
+          Удалить
+        </button>
+      </form>
+
+      <button class="text-regular font-normal">На почту</button>
+
+      <a
+        href="https://s3.twcstorage.ru/f82ce622-48ed-4960-af9b-5be38e2c99d4/media/{{ file.file }}"
+        class="a-button text-regular font-normal"
+        target="_blank"
+        download>Скачать</a>
+    </div>
+  </div>
+
   <div class="main-block gap-v-10">
     <h3>Основная информация</h3>
 
@@ -52,25 +75,6 @@
           <p class="text-regular font-normal">Обновлен: <span class="text-small font-light">{{ file.updated_at }}</span></p>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="main-block gap-v-30">
-    <h3>Действия</h3>
-
-    <div class="gap-h-10">
-      <form action="{% url 'filesdelete' file.pk %}" method="post">
-        {% csrf_token %}
-        <button type="submit"
-                class="text-regular font-normal"
-                onclick="event.stopPropagation(); return confirm('Удалить файл?')">
-          Удалить
-        </button>
-      </form>
-
-      <button class="text-regular font-normal">На почту</button>
-
-      <button class="text-regular font-normal">Сохранить</button>
     </div>
   </div>
 </section>
