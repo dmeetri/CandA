@@ -35,7 +35,7 @@ class FileCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('fileslist')
 
 
-#@method_decorator(cache_page(60 * 15), name='dispatch')
+@method_decorator(cache_page(60 * 15), name='dispatch')
 class FilesListView(LoginRequiredMixin, ListView):
     model = models.FileModel
     template_name = 'files/files.html'
@@ -46,10 +46,14 @@ class FilesListView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['filter_form'] = forms.FilterFilesForm(self.request.GET)
 
+        latest_file = models.FileModel.objects.order_by('-updated_at').first()
+        if latest_file: context['last_update_date'] = latest_file.updated_at
+        else: context['last_update_date'] = None
+
         return context
 
     def get_queryset(self):
-        queryset = super().get_queryset().only('id', 'title', 'description', 'extension', 'created_at', 'updated_at').order_by('-created_at')
+        queryset = super().get_queryset().only('id', 'title', 'description', 'extension', 'created_at', 'updated_at').order_by('-updated_at')
 
         title = self.request.GET.get('title')
         if title:
