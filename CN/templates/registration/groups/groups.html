@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Группы{% endblock %}
+
+{% block content %}
+<section class="main-block gap-v-30">
+  <h2>Все группы</h2>
+
+  {% for group in groups %}
+    <p>{{ group.name }}</p>
+    <p>{{ group.permissions }}</p>
+  {% endfor %}
+</section>
+{% endblock %}

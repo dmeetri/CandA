@@ -3,6 +3,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    path('groups/create', views.GroupCreateView.as_view(), name='groupscreate'),
+    path('groups/list', views.GroupListView.as_view(), name='groupslist'),
+
     path('users/list', views.UsersListView.as_view(), name='userslist'),
 
     path('files/create/', views.FileCreateView.as_view(), name='filescreate'),

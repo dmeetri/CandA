@@ -5,6 +5,7 @@ from django.views.decorators.cache import cache_page
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import get_user_model
+from django.contrib.auth.models import Group
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
 from django.db.models import Q
@@ -12,6 +13,20 @@ from django.db.models import Q
 from .services import send_email_message
 
 from . import models, forms
+
+# === GROUPS ===
+
+class GroupCreateView(LoginRequiredMixin, CreateView):
+    model = Group
+    form_class = forms.CreateGroupFrom
+    template_name = 'registration/groups/create_group.html'
+    success_url = reverse_lazy('groupslist')
+
+
+class GroupListView(LoginRequiredMixin, ListView):
+    model = Group
+    template_name = 'registration/groups/groups.html'
+    context_object_name = 'groups'
 
 # === USERS ===
 
