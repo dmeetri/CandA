@@ -8,6 +8,14 @@
   <h2>Все группы</h2>
 
   <div class="main-block gap-v-10">
+    <h3>Данные</h3>
+
+    <div class="gap-h-10">
+      {% include 'components/count.html' with title="Записей" count=groups|length %}
+    </div>
+  </div>
+
+  <div class="main-block gap-v-10">
     <h3>Действия</h3>
 
     <div class="gap-v-10">

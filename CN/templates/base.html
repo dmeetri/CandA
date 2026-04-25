@@ -33,28 +33,30 @@
 
         <nav class="aside-navigation">
           <div class="aside-nav-section">
-            <h4>Админка</h4>
+            <h4 class="font-colot-second">Админка</h4>
 
             <div class="gap-v-10">
-              <a href="#" class="a-aside-nav-hover text-regular">Дашборд</a>
+              <a href="#" class="a-aside-nav-hover text-regular font-light">Дашборд</a>
             </div>
           </div>
 
           <div class="aside-nav-section">
-            <h4>Пользователи</h4>
+            <h4 class="font-colot-second">Пользователи</h4>
 
             <div class="gap-v-10">
-              <a href="{% url 'groupslist' %}" class="a-aside-nav-hover text-regular">Группы</a>
-              <a href="{% url 'userslist' %}" class="a-aside-nav-hover text-regular">Пользователи</a>
+              <a href="{% url 'groupslist' %}" class="a-aside-nav-hover text-regular font-light">Создать группу</a>
+              <a href="{% url 'groupslist' %}" class="a-aside-nav-hover text-regular font-light">Все группы</a>
+              <a href="{% url 'userslist' %}" class="a-aside-nav-hover text-regular font-light">Создать пользователя</a>
+              <a href="{% url 'userslist' %}" class="a-aside-nav-hover text-regular font-light">Все пользователи</a>
             </div>
           </div>
 
           <div class="aside-nav-section">
-            <h4>Файлы</h4>
+            <h4 class="font-colot-second">Файлы</h4>
 
             <div class="gap-v-10">
-              <a href="{% url 'fileslist' %}" class="a-aside-nav-hover text-regular">Загрузить</a>
-              <a href="{% url 'fileslist' %}" class="a-aside-nav-hover text-regular">Все файлы</a>
+              <a href="{% url 'fileslist' %}" class="a-aside-nav-hover text-regular font-light">Загрузить</a>
+              <a href="{% url 'fileslist' %}" class="a-aside-nav-hover text-regular font-light">Все файлы</a>
             </div>
           </div>
         </nav>

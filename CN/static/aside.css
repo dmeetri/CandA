@@ -27,17 +27,19 @@ aside {
   border-bottom: 1px solid var(--border-light);
   padding-bottom: 5px;
   padding-left: 10px;
+  margin-bottom: 5px;
 }
 .aside-nav-section div {
   gap: 0;
 }
 
 .a-aside-nav-hover {
-  margin-top: 3px;
   padding: 5px 10px;
+  transition: all 0.1s ease-in-out;
 }
 .a-aside-nav-hover:hover {
   background-color: var(--accent-color);
+  transform: translateX(3px);
 }
 
 /* SHOW ASIDE */

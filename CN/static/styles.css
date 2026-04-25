@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap');
 
 /* ROOT */
 
@@ -10,6 +10,9 @@
   --bg-block: #242731;
   --bg-table: #1d2028;
   --bg-gradient: linear-gradient(180deg, #2b303b, #1c1f26);
+
+  --font-main: #d1d3db;
+  --font-second: #afb3c4;
 
   --border-light: #4c5366;
   --border-dark: #1a182f;
@@ -29,7 +32,7 @@ body {
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  color: #d1d1d1;
+  color: var(--font-main);
 
   background-color: var(--bg-page);
 }
@@ -61,7 +64,7 @@ button {
   border-radius: 3px;
   outline: none;
   cursor: pointer;
-  color: #d1d1d1;
+  color: var(--font-main);
 }
 button:hover {
   background: var(--accent-color-hover);
@@ -128,7 +131,7 @@ input {
   border: 1px solid var(--border-dark);
   border-radius: 3px;
   outline: none;
-  color: #d1d1d1;
+  color: var(--font-main);
   font-size: 16px;
 }
 input:hover {
@@ -147,7 +150,7 @@ select {
   border: 1px solid var(--border-dark);
   border-radius: 3px;
   outline: none;
-  color: #d1d1d1;
+  color: var(--font-main);
   font-size: 16px;
 }
 
@@ -197,6 +200,15 @@ select {
 }
 .font-bold {
   font-weight: 700;
+}
+
+/* FONT COLOR */
+
+.font-color-main {
+  color: var(--font-main);
+}
+.font-colot-second {
+  color: var(--font-second);
 }
 
 /* TABLES */
