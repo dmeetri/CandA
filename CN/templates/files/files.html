@@ -9,92 +9,97 @@
 {% block title %}Файлы{% endblock %}
 
 {% block content %}
-<section class="main-block gap-v-30">
-  <h2>Все файлы</h2>
+<div class="all-files-root-flex">
+  <section class="gap-v-20 all-files-main">
+    {% include 'components/page_name.html' with name='Все файлы' %}
 
-  <div class="main-block gap-v-10">
-    <h3>Данные</h3>
+    <div class="gap-v-10 section-block">
+      <h3 class="font-select yellow">Фильтрация</h3>
 
-    <div class="gap-h-10">
-      {% include 'components/count.html' with title="Записей" count=files|length %}
-      {% include 'components/count.html' with title="Последняя запись" count=last_update_date|date:"d.m.Y H:i" %}
+      <form method="GET" enctype="multipart/form-data" class="gap-v-20">
+        <div class="all-files-form-content gap-h-10">
+          {{ filter_form.search }}
+          {{ filter_form.extension }}
+        </div>
+
+        <button type="submit" class="button-left-right gray text-regular font-bold">Фильтр</button>
+      </form>
+
+      <table>
+        <thead>
+          <th >ID</th>
+          <th>Название</th>
+          <th>Описание</th>
+          <th>Расширение</th>
+          <th>Создан</th>
+          <th>Обновлен</th>
+          <th>Удалить</th>
+        </thead>
+        <tbody class="all-files-table">
+          {% for file in files %}
+          <tr data-href="{% url 'filesdetail' file.pk %}">
+            <td class="font-center font-bold">{{ file.id }}</td>
+            <td class="files-td-title font-bold">{{ file.title }}</td>
+            <td class="files-td-desc">{{ file.description }}</td>
+            <td class="small-cell font-center font-bold">{{ file.extension }}</td>
+            <td class="small-cell">{{ file.created_at|date:"d.m.Y H:i" }}</td>
+            <td class="small-cell">{{ file.updated_at|date:"d.m.Y H:i" }}</td>
+            <td class="last-cell">
+              <form action="{% url 'filesdelete' file.pk %}" method="post"> <!--FIXME удалние файлов одекватное -->
+                {% csrf_token %}
+                <button type="submit"
+                        class="font-normal"
+                        onclick="event.stopPropagation(); return confirm('Удалить файл?')">
+                  Удалить
+                </button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <!-- FIXME потом сделай стили -->
+      <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; Первая</a>
+            <a href="?page={{ page_obj.previous_page_number }}">Назад</a>
+        {% endif %}
+
+        <span class="current">
+            Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Вперед</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">Последняя &raquo;</a>
+        {% endif %}
+      </div>
     </div>
-  </div>
+  </section>
 
-  <div class="main-block gap-v-10">
-    <h3>Действия</h3>
+  <section class="main-block gap-v-10 all-files-second-block">
+    <div class="gap-v-20">
+      <div class="gap-v-10">
+        <h4 class="font-select pink">Метрики</h4>
 
-    <div class="gap-v-10">
-      <a class="a-button text-regular font-normal" href="{% url 'filescreate' %}">
-        Загрузить файлы
-      </a>
-    </div>
-  </div>
-
-  <div class="main-block gap-v-10">
-    <h3>Фильтрация</h3>
-
-    <form method="GET" enctype="multipart/form-data" class="gap-v-20">
-      <div class="all-files-form-content gap-h-10">
-        {{ filter_form.search }}
-        {{ filter_form.extension }}
+        <div class="light-block">
+          <p class="text-normal">Записей: {{ files|length }}</p>
+          <p class="text-normal">Последняя: {{ last_update_date|date:"d.m.Y" }}</p>
+        </div>
       </div>
 
-      <button type="submit" class="blue-button text-regular font-bold">Фильтр</button>
-    </form>
-  </div>
+      <div class="gap-v-10">
+        <h4 class="font-select pink">Действия</h4>
 
-  <table class="main-block">
-    <thead>
-      <th >ID</th>
-      <th>Название</th>
-      <th>Описание</th>
-      <th>Расширение</th>
-      <th>Создан</th>
-      <th>Обновлен</th>
-      <th>Удалить</th>
-    </thead>
-    <tbody class="all-files-table">
-      {% for file in files %}
-      <tr data-href="{% url 'filesdetail' file.pk %}">
-        <td class="font-center font-bold">{{ file.id }}</td>
-        <td class="files-td-title font-bold">{{ file.title }}</td>
-        <td class="files-td-desc">{{ file.description }}</td>
-        <td class="small-cell font-center font-bold">{{ file.extension }}</td>
-        <td class="small-cell">{{ file.created_at|date:"d.m.Y H:i" }}</td>
-        <td class="small-cell">{{ file.updated_at|date:"d.m.Y H:i" }}</td>
-        <td class="last-cell">
-          <form action="{% url 'filesdelete' file.pk %}" method="post"> <!--FIXME удалние файлов одекватное -->
-            {% csrf_token %}
-            <button type="submit"
-                    class="font-normal"
-                    onclick="event.stopPropagation(); return confirm('Удалить файл?')">
-              Удалить
-            </button>
-          </form>
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-
-  <!-- FIXME потом сделай стили -->
-  <div class="pagination">
-    {% if page_obj.has_previous %}
-        <a href="?page=1">&laquo; Первая</a>
-        <a href="?page={{ page_obj.previous_page_number }}">Назад</a>
-    {% endif %}
-
-    <span class="current">
-        Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}
-    </span>
-
-    {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}">Вперед</a>
-        <a href="?page={{ page_obj.paginator.num_pages }}">Последняя &raquo;</a>
-    {% endif %}
+        <div class="gap-v-10">
+          <button class="button-left-right gray font-left">Удалить</button>
+          <button class="button-left-right gray font-left">На почту</button>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
-</section>
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {

@@ -1,13 +1,13 @@
 /* ASIDE */
 
 aside {
-  min-width: 230px;
-  max-width: 230px;
-  overflow: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
 
+  width: 230px;
   height: 100vh;
-  background: var(--bg-gradient);
-  border-right: 1px solid var(--border-light);
+  background-color: var(--bg-block);
   box-shadow: var(--shadow-sm);
 }
 
@@ -21,25 +21,14 @@ aside {
 }
 
 .aside-nav-section {
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 .aside-nav-section h4 {
-  border-bottom: 1px solid var(--border-light);
-  padding-bottom: 5px;
   padding-left: 10px;
-  margin-bottom: 5px;
+  margin: 10px;
 }
 .aside-nav-section div {
   gap: 0;
-}
-
-.a-aside-nav-hover {
-  padding: 5px 10px;
-  transition: all 0.1s ease-in-out;
-}
-.a-aside-nav-hover:hover {
-  background-color: var(--accent-color);
-  transform: translateX(3px);
 }
 
 /* SHOW ASIDE */

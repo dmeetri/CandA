@@ -10,83 +10,57 @@
   <title>C&N | {% block title %}Дашборд{% endblock %}</title>
 </head>
 <body>
-  <div id="mobile-aside-content" class="mobile-aside-content">
-    <div class="mobile-aside-nav gap-v-10">
-      <nav class="aside-navigation mobile">
-        <a href="#" class="a-aside-nav-hover text-regular font-normal">Дашборд</a>
-        <a href="{% url 'fileslist' %}" class="a-aside-nav-hover text-regular font-normal">Файлы</a>
-        <a href="{% url 'userslist' %}" class="a-aside-nav-hover text-regular font-normal">Пользователи</a>
-      </nav>
-    </div>
-  </div>
-
-  <button id="show-burger-button" class="show-aside-button">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Burger-classic SVG Icon</title><path fill="currentColor" d="M4 6a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1m0 6a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1m1 5a1 1 0 1 0 0 2h14a1 1 0 1 0 0-2z"/></svg>
-  </button>
-
-  <div class="root-container">
-    <aside>
-      <div class="gap-v-10">
-        <div class="aside-header-content">
-          <h1>C&N</h1>
-        </div>
-
-        <nav class="aside-navigation">
-          <div class="aside-nav-section">
-            <h4 class="font-colot-second">Админка</h4>
-
-            <div class="gap-v-10">
-              <a href="#" class="a-aside-nav-hover text-regular font-light">Дашборд</a>
-            </div>
-          </div>
-
-          <div class="aside-nav-section">
-            <h4 class="font-colot-second">Пользователи</h4>
-
-            <div class="gap-v-10">
-              <a href="{% url 'groupslist' %}" class="a-aside-nav-hover text-regular font-light">Создать группу</a>
-              <a href="{% url 'groupslist' %}" class="a-aside-nav-hover text-regular font-light">Все группы</a>
-              <a href="{% url 'userslist' %}" class="a-aside-nav-hover text-regular font-light">Создать пользователя</a>
-              <a href="{% url 'userslist' %}" class="a-aside-nav-hover text-regular font-light">Все пользователи</a>
-            </div>
-          </div>
-
-          <div class="aside-nav-section">
-            <h4 class="font-colot-second">Файлы</h4>
-
-            <div class="gap-v-10">
-              <a href="{% url 'fileslist' %}" class="a-aside-nav-hover text-regular font-light">Загрузить</a>
-              <a href="{% url 'fileslist' %}" class="a-aside-nav-hover text-regular font-light">Все файлы</a>
-            </div>
-          </div>
-        </nav>
-
-        <div class="profile-button">
-          <a href="#" class="a-aside-nav-hover text-regular">Профиль</a>
-        </div>
-
-        <form method="post" action="{% url 'logout' %}">
-            {% csrf_token %}
-            <button type="submit" class="text-regular font-normal">Выйти</button>
-          </form>
+  <aside>
+    <div class="gap-v-10">
+      <div class="aside-header-content">
+        <h1>C&N</h1>
       </div>
-    </aside>
 
-    <main>
-      {% block content %}
-        {{ cpu_load }}
-      {% endblock %}
-    </main>
-  </div>
+      <nav class="aside-navigation">
+        <div class="aside-nav-section">
+          <h4 class="font-select red no-font-select">Админка</h4>
+
+          <div class="gap-v-10">
+            <a href="#" class="aside-nav-btn button-left-right text-regular font-light">Дашборд</a>
+          </div>
+        </div>
+
+        <div class="aside-nav-section">
+          <h4 class="font-select pink no-font-select">Пользователи</h4>
+
+          <div class="gap-v-10">
+            <a href="{% url 'groupslist' %}" class="aside-nav-btn button-left-right text-regular font-light">Создать группу</a>
+            <a href="{% url 'groupslist' %}" class="aside-nav-btn button-left-right text-regular font-light">Все группы</a>
+            <a href="{% url 'userslist' %}" class="aaside-nav-btn button-left-right text-regular font-light">Создать пользователя</a>
+            <a href="{% url 'userslist' %}" class="aside-nav-btn button-left-right text-regular font-light">Все пользователи</a>
+          </div>
+        </div>
+
+        <div class="aside-nav-section">
+          <h4 class="font-select yellow no-font-select">Файлы</h4>
+
+          <div class="gap-v-10">
+            <a href="{% url 'filescreate' %}" class="aside-nav-btn button-left-right text-regular font-light">Загрузить</a>
+            <a href="{% url 'fileslist' %}" class="aside-nav-btn button-left-right text-regular font-light">Все файлы</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="profile-button">
+        <a href="#" class="aside-nav-btn button-left-right text-regular">Профиль</a>
+      </div>
+
+      <form method="post" action="{% url 'logout' %}">
+          {% csrf_token %}
+          <button type="submit" class="text-regular font-normal">Выйти</button>
+        </form>
+    </div>
+  </aside>
+
+  <main>
+    <div class="container">
+      {% block content %}{% endblock %}
+    </div>
+  </main>
 </body>
-
-<script>
-  const btn = document.getElementById('show-burger-button');
-  const content = document.getElementById('mobile-aside-content');
-
-  btn.addEventListener('click', () => {
-    if (content.style.display === 'none') content.style.display = 'block';
-    else content.style.display = 'none';
-  });
-</script>
 </html>
