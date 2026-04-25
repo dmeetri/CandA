@@ -7,9 +7,40 @@
 <section class="main-block gap-v-30">
   <h2>Все группы</h2>
 
-  {% for group in groups %}
-    <p>{{ group.name }}</p>
-    <p>{{ group.permissions }}</p>
-  {% endfor %}
+  <div class="main-block gap-v-10">
+    <h3>Действия</h3>
+
+    <div class="gap-v-10">
+      <a class="a-button text-regular font-normal" href="{% url 'groupscreate' %}">
+        Создать группу
+      </a>
+    </div>
+  </div>
+
+  <table class="main-block">
+    <thead>
+      <th >ID</th>
+      <th>Название</th>
+      <th>Удалить</th>
+    </thead>
+    <tbody class="all-files-table">
+      {% for group in groups %}
+      <tr>
+        <td class="font-center font-bold">{{ group.id }}</td>
+        <td class="font-bold">{{ group.name }}</td>
+        <td class="last-cell">
+          <form action="{% url 'groupsdelete' group.pk %}" method="post">
+            {% csrf_token %}
+            <button type="submit"
+                    class="font-normal"
+                    onclick="event.stopPropagation(); return confirm('Удалить файл?')">
+              Удалить
+            </button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </section>
 {% endblock %}

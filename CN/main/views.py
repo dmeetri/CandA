@@ -28,6 +28,15 @@ class GroupListView(LoginRequiredMixin, ListView):
     template_name = 'registration/groups/groups.html'
     context_object_name = 'groups'
 
+
+class GroupDeleteView(LoginRequiredMixin, DeleteView):
+    model = Group
+    success_url = reverse_lazy('groupslist')
+
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)
+
+
 # === USERS ===
 
 User = get_user_model()

@@ -5,6 +5,7 @@ from . import views
 urlpatterns = [
     path('groups/create', views.GroupCreateView.as_view(), name='groupscreate'),
     path('groups/list', views.GroupListView.as_view(), name='groupslist'),
+    path('groups/delete/<int:pk>', views.GroupDeleteView.as_view(), name='groupsdelete'),
 
     path('users/list', views.UsersListView.as_view(), name='userslist'),
 
