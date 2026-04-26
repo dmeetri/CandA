@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="{% static 'styles.css' %}">
   <link rel="stylesheet" href="{% static 'aside.css' %}">
   {% block extra_css %}{% endblock %}
-  <title>C&N | {% block title %}Дашборд{% endblock %}</title>
+  <title>C&N >> {% block title %}Дашборд{% endblock %}</title>
 </head>
 <body>
   <aside>
@@ -45,21 +45,20 @@
             <a href="{% url 'fileslist' %}" class="aside-nav-btn button-left-right text-regular font-light">Все файлы</a>
           </div>
         </div>
+
+        <div class="aside-nav-section">
+          <div class="gap-v-10">
+            <a href="{% url 'usersprofile' user.pk %}" class="aside-nav-btn button-left-right text-regular">Профиль</a>
+          </div>
+        </div>
       </nav>
-
-      <div class="profile-button">
-        <a href="#" class="aside-nav-btn button-left-right text-regular">Профиль</a>
-      </div>
-
-      <form method="post" action="{% url 'logout' %}">
-          {% csrf_token %}
-          <button type="submit" class="text-regular font-normal">Выйти</button>
-        </form>
     </div>
   </aside>
 
   <main>
-    <div class="container">
+    <div class="container gap-v-30">
+      <h3>Добро пожаловать, {{ user.username }}!</h3>
+
       {% block content %}{% endblock %}
     </div>
   </main>

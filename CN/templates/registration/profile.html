@@ -5,10 +5,33 @@
 <link rel="stylesheet" href="{% static 'auth.css' %}" />
 {% endblock %}
 
-{% block title %}Профиль{% endblock %}
+{% block title %}Профиль >> {{ user.username }}{% endblock %}
 
 {% block content %}
-<section class="main-block">
+<div class="profile-root-flex">
+  <section class="gap-v-20 profile-main">
+    {% include 'components/page_name.html' with name='Профиль' %}
 
-</section>
+    <div class="gap-v-10 section-block"></div>
+  </section>
+
+  <section class="main-block gap-v-10 profile-second-block">
+    <div class="gap-v-20">
+      <div class="gap-v-10">
+        <h4 class="font-select pink">Данные</h4>
+
+        <div class="light-block">
+          <p class="text-normal">Создан: {{ duser.date_joined|date:"d.m.Y H:i" }}</p>
+          <p class="text-normal">
+            {% if duser.email_confirmed %}
+              Почта: Подтверждена
+            {% else %}
+              Почта: Не подтверждена
+            {% endif %}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 {% endblock %}

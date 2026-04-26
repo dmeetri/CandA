@@ -51,6 +51,13 @@ class UsersListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return super().get_queryset().only('id', 'username', 'email')
 
+
+class UsersDetailView(LoginRequiredMixin, DetailView):
+    model = User
+    template_name = 'registration/profile.html'
+    context_object_name = 'duser'
+
+
 # === FILES ===
 
 class FileCreateView(LoginRequiredMixin, CreateView):

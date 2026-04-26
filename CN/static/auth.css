@@ -16,3 +16,20 @@
 
 /* PROFILE */
 
+.profile-root-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.profile-main {
+  flex: 1;
+}
+.profile-second-block {
+  max-width: 250px;
+  width: 100%;
+  height: fit-content;
+}
+
+
+
