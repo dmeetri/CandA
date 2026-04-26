@@ -10,12 +10,12 @@
 </head>
 <body>
   <div class="auth-center-container">
-    <form class="auth-form main-block" method="post">
+    <form class="auth-form main-block gap-v-20" method="post">
       {% csrf_token %}
 
-      <h1>Авторизация</h1>
+      <h3 class="font-select green">Авторизация</h3>
 
-      <div class="auth-block">
+      <div class="gap-v-20">
         <div class="auth-input">
           <label>Имя пользователя</label>
           {{ form.username }}
@@ -27,7 +27,7 @@
         </div>
       </div>
 
-      <button type="submit" class="text-regular font-normal">Войти</button>
+      <button type="submit" class="button-left-right gray">Войти</button>
     </form>
   </div>
 </body>
