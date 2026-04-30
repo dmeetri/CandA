@@ -22,6 +22,10 @@ class CreateFileForm(forms.ModelForm):
         required=False,
         widget=forms.TextInput(attrs={'placeholder': 'Описание'})
     )
+    file = forms.FileField(
+        required=True,
+        widget=forms.ClearableFileInput(attrs={'placeholder': 'Загрузите файл'})
+    )
 
     class Meta:
         model = models.FileModel
