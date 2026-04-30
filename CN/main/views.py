@@ -2,13 +2,18 @@ import json
 
 from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView
 from django.views.decorators.cache import cache_page
-from django.urls import reverse_lazy
+from django.views import View
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
+from django.contrib import messages
+
+from django.urls import reverse_lazy
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
 from django.db.models import Q
+from django.shortcuts import redirect
 
 from .services import send_email_message
 
@@ -41,7 +46,7 @@ class GroupDeleteView(LoginRequiredMixin, DeleteView):
 
 User = get_user_model()
 
-#@method_decorator(cache_page(60 * 15), name='dispatch')
+@method_decorator(cache_page(60 * 15), name='dispatch')
 class UsersListView(LoginRequiredMixin, ListView):
     model = User
     template_name = 'registration/users.html'
@@ -67,7 +72,7 @@ class FileCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('fileslist')
 
 
-#@method_decorator(cache_page(60 * 15), name='dispatch')
+@method_decorator(cache_page(60 * 15), name='dispatch')
 class FilesListView(LoginRequiredMixin, ListView):
     model = models.FileModel
     template_name = 'files/files.html'
@@ -115,6 +120,30 @@ class FileUpdateView(LoginRequiredMixin, UpdateView):
     form_class = forms.CreateFileForm
     template_name = 'files/file.html'
     success_url = reverse_lazy('filesdetail')
+
+
+class FilesDeleteSelectedView(LoginRequiredMixin, View):
+    success_url = reverse_lazy('fileslist')
+
+    def post(self, request, *args, **kwargs):
+        selected_ids = request.POST.getlist('selected_items')
+
+        if not selected_ids:
+            messages.error(request, 'Не выбрано ни одного элемента для удаления')
+            return redirect(self.success_url)
+
+        valid_ids = [id for id in selected_ids if id.isdigit()]
+        if not valid_ids:
+            messages.error(request, 'Выбраны некорректные элементы')
+            return redirect(self.success_url)
+
+        deleted_count, _ = models.FileModel.objects.filter(id__in=valid_ids).delete()
+        if deleted_count:
+            messages.success(request, f'Успешно удалено {deleted_count} записей')
+        else:
+            messages.error(request, 'Не удалось удалить выбранные записи')
+
+        return redirect(self.success_url)
 
 
 class FileDeleteView(LoginRequiredMixin, DeleteView):

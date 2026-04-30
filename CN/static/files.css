@@ -48,9 +48,11 @@
 .all-files-table tr {
   cursor: pointer;
 }
-.all-files-table tr:hover :not(.last-cell) {
+
+.all-files-table tr:hover :not(.last-cell .first-cell) {
   background-color: var(--accent-color-hover);
 }
+
 .all-files-table tr:hover td.last-cell {
   background-color: transparent !important;
 }

@@ -129,6 +129,18 @@ input[type="file"]::file-selector-button {
   appearance: none;
 }
 
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+
+  margin: 0;
+  padding: 0;
+}
+input[type="checkbox"]:checked {
+  background-color: var(--accent-color-hover);
+  border-color: var(--accent-color);
+}
+
 /* BUTTONS */
 
 .button-left-right {
@@ -331,6 +343,11 @@ td {
   padding: 7px;
   border-bottom: 1px solid var(--border-light);
   border-right: 1px solid var(--border-light);
+}
+.delete-table-button {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
 }
 
 /* BASE PAGE */

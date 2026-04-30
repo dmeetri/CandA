@@ -25,39 +25,53 @@
         <button type="submit" class="button-left-right gray text-regular font-bold">Фильтр</button>
       </form>
 
-      <table>
-        <thead>
-          <th >ID</th>
-          <th>Название</th>
-          <th>Описание</th>
-          <th>Расширение</th>
-          <th>Создан</th>
-          <th>Обновлен</th>
-          <th>Удалить</th>
-        </thead>
-        <tbody class="all-files-table">
-          {% for file in files %}
-          <tr data-href="{% url 'filesdetail' file.pk %}">
-            <td class="font-center font-bold">{{ file.id }}</td>
-            <td class="files-td-title font-bold">{{ file.title }}</td>
-            <td class="files-td-desc">{{ file.description }}</td>
-            <td class="small-cell font-center font-bold">{{ file.extension }}</td>
-            <td class="small-cell">{{ file.created_at|date:"d.m.Y H:i" }}</td>
-            <td class="small-cell">{{ file.updated_at|date:"d.m.Y H:i" }}</td>
-            <td class="last-cell">
-              <form action="{% url 'filesdelete' file.pk %}" method="post"> <!--FIXME удалние файлов одекватное -->
-                {% csrf_token %}
-                <button type="submit"
-                        class="font-normal"
-                        onclick="event.stopPropagation(); return confirm('Удалить файл?')">
-                  Удалить
-                </button>
-              </form>
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+      <form id="deleteForm" method="POST" action="{% url 'filesdeleteselected' %}">
+        {% csrf_token %}
+
+        <table>
+          <thead>
+            <th>
+              <input type="checkbox" id="select-all">
+            </th>
+            <th >ID</th>
+            <th>Название</th>
+            <th>Описание</th>
+            <th>Расширение</th>
+            <th>Создан</th>
+            <th>Обновлен</th>
+            <th>Удалить</th>
+          </thead>
+          <tbody class="all-files-table">
+            {% for file in files %}
+            <tr data-href="{% url 'filesdetail' file.pk %}">
+              <td class="small-cell first-cell">
+                <input
+                  type="checkbox"
+                  class="table-checkbox"
+                  name="selected_items"
+                  value="{{ file.pk }}">
+              </td>
+              <td class="font-bold">{{ file.id }}</td>
+              <td class="files-td-title font-bold">{{ file.title }}</td>
+              <td class="files-td-desc">{{ file.description }}</td>
+              <td class="small-cell font-bold">{{ file.extension }}</td>
+              <td class="small-cell">{{ file.created_at|date:"d.m.Y H:i" }}</td>
+              <td class="small-cell">{{ file.updated_at|date:"d.m.Y H:i" }}</td>
+              <td class="last-cell">
+                <form action="{% url 'filesdelete' file.pk %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit"
+                          class="font-normal delete-table-button"
+                          onclick="event.stopPropagation(); return confirm('Удалить файл?')">
+                    Удалить
+                  </button>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </form>
 
       <!-- FIXME потом сделай стили -->
       <div class="pagination">
@@ -93,7 +107,7 @@
         <h4 class="font-select pink">Действия</h4>
 
         <div class="gap-v-10">
-          <button class="button-left-right gray font-left">Удалить</button>
+          <button class="button-left-right gray font-left" onclick="delete_selected_rows()">Удалить</button>
           <button class="button-left-right gray font-left">На почту</button>
         </div>
       </div>
@@ -101,6 +115,7 @@
   </section>
 </div>
 
+<script src="{% static 'js/checkbox.js' %}"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function() {
   const rows = document.querySelectorAll("tr[data-href]");
