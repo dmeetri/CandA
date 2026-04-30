@@ -1,7 +1,6 @@
 import json
 
 from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView
-from django.views.decorators.cache import cache_page
 from django.views import View
 
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -11,7 +10,6 @@ from django.contrib import messages
 
 from django.urls import reverse_lazy
 from django.http import JsonResponse
-from django.utils.decorators import method_decorator
 from django.db.models import Q
 from django.shortcuts import redirect
 
@@ -46,7 +44,6 @@ class GroupDeleteView(LoginRequiredMixin, DeleteView):
 
 User = get_user_model()
 
-@method_decorator(cache_page(60 * 15), name='dispatch')
 class UsersListView(LoginRequiredMixin, ListView):
     model = User
     template_name = 'registration/users.html'
@@ -72,7 +69,6 @@ class FileCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('fileslist')
 
 
-@method_decorator(cache_page(60 * 15), name='dispatch')
 class FilesListView(LoginRequiredMixin, ListView):
     model = models.FileModel
     template_name = 'files/files.html'
