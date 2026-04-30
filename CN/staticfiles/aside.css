@@ -1,0 +1,85 @@
+/* ASIDE */
+
+aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 230px;
+  height: 100vh;
+  background-color: var(--bg-block);
+  box-shadow: var(--shadow-sm);
+}
+
+.aside-header-content {
+  padding: 10px;
+  align-items: baseline;
+}
+
+.aside-navigation {
+  display: block;
+  width: 100%;
+}
+
+.aside-nav-section {
+  margin-bottom: 22px;
+}
+.aside-nav-section h4 {
+  padding-left: 10px;
+  margin: 10px;
+}
+.aside-nav-section div {
+  gap: 0;
+}
+
+/* SHOW ASIDE */
+
+.show-aside-button {
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 999;
+
+  width: 50px;
+  height: 50px;
+}
+
+/* MOBILE ASIDE */
+
+.mobile-aside-content {
+  display: none;
+  position: fixed;
+  z-index: 998;
+  width: 100%;
+  height: 100vh;
+  background: var(--bg-gradient);
+  animation: slideDown 0.5s ease-out forwards;
+}
+@keyframes slideDown {
+  from {
+    transform: translateY(-150vh);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.mobile-aside-nav {
+  margin-top: 70px;
+}
+
+
+@media (max-width: 750px) {
+  aside {
+    min-width: 150px;
+    max-width: 150px;
+  }
+}
+@media (max-width: 600px) {
+  aside {
+    display: none;
+  }
+  .show-aside-button {
+    display: block;
+  }
+}

@@ -1,0 +1,35 @@
+/* LOGIN PAGE */
+
+.auth-center-container {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.auth-center-container form {
+  width: 350px;
+}
+
+/* ALL USERS */
+
+/* PROFILE */
+
+.profile-root-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.profile-main {
+  flex: 1;
+}
+.profile-second-block {
+  max-width: 250px;
+  width: 100%;
+  height: fit-content;
+}
+
+
+

@@ -1,0 +1,12 @@
+.go-back-component {
+  align-items: center;
+  width: fit-content;
+}
+
+.go-back-component button {
+  color: var(--font-second);
+}
+
+.go-back-component * {
+  white-space: nowrap;
+}
